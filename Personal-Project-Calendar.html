@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <title>Calendar</title>
+  <link href="Personal-Project.css" type="text/css" rel="stylesheet">
+  <link rel="stylesheet" href="Personal-Project-Calendar.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;1,400&family=Nunito:wght@300;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  </head>
+  <body>
+
+    <div class="grid">
+
+      <div id="header">
+        <img class="logo" src="hourglass.png"></img>
+        <a href="Personal-Project-Landing-Page.html" class="title">Tempus</a>
+        <img src="undraw_male_avatar_323b.svg" alt="avatar" id="usericon">
+        <div id="username">&nbsp;<span id="arrow">&#9660;</span></div>
+
+        <div class="dropdown">
+          <div class="settings">Settings</div>
+          <div class="logout">Log out</div>
+        </div>
+    </div>
+
+
+      <div id="iconbar">
+          <div class="menu">
+          <img src="Hamburger Menu2.png" alt="Hamburger Menu" class="sideimg">
+        </div>
+      <a  href="Personal-Project-Home.html">
+        <img src="Home2.png" alt="home" class="sideimg">
+        <div class="icon home">Home</div>
+      </a>
+
+      <a href="Personal-Project-Stopwatch.html">
+        <img src="Clock2.png" alt="clock" class="sideimg">
+        <div class="icon time">Timer/Stopwatch</div>
+      </a>
+      <a href="Personal-Project-Todo.html">
+        <img src="Todo2.png" alt="todo" class="sideimg">
+        <div class="icon todo">To-Do</div></a>
+      <a href="Personal-Project-Calendar.html" class="selected">
+        <img src="Calendar3.png" alt="calendar" class="sideimg">
+        <div class="icon calendar">Calendar</div></a>
+      </div>
+
+      <div class="calendarFunction">
+        <div class="month">
+          <i class="material-icons prev">
+          navigate_before
+        </i>
+          <div class="date">
+          <h1></h1>
+          <p></p>
+        </div>
+        <i class="material-icons next">
+          navigate_next
+        </i>
+        </div>
+        <div class="weekdays">
+          <div>Sun</div>
+          <div>Mon</div>
+          <div>Tue</div>
+          <div>Wed</div>
+          <div>Thu</div>
+          <div>Fri</div>
+          <div>Sat</div>
+        </div>
+        <div class="days">
+          <div class="prev-date">27</div>
+          <div class="prev-date">28</div>
+          <div class="prev-date">29</div>
+          <div class="prev-date">30</div>
+          <div class="prev-date">31</div>
+          <div>1</div>
+          <div>2</div>
+          <div>3</div>
+          <div>4</div>
+          <div>5</div>
+          <div>6</div>
+          <div>7</div>
+          <div>8</div>
+          <div>9</div>
+          <div>10</div>
+          <div>11</div>
+          <div>12</div>
+          <div>13</div>
+          <div>14</div>
+          <div>15</div>
+          <div>16</div>
+          <div>17</div>
+          <div>18</div>
+          <div>19</div>
+          <div>20</div>
+          <div>21</div>
+          <div>22</div>
+          <div>23</div>
+          <div>24</div>
+          <div>25</div>
+          <div>26</div>
+          <div>27</div>
+          <div>28</div>
+          <div>29</div>
+          <div>30</div>
+          <div class="today">31</div>
+          <div class="next-date">1</div>
+          <div class="next-date">2</div>
+          <div class="next-date">3</div>
+          <div class="next-date">4</div>
+          <div class="next-date">5</div>
+          <div class="next-date">6</div>
+
+          </div>
+          </div>
+        <div id="right">
+          <div class="events">
+            There is no event on this day.
+          </div>
+        </div>
+      </div>
+    <script src="Personal-Project-Calendar.js"></script>
+    <script src="Personal-Project-Menu.js"></script>
+  </body>
+  </html>

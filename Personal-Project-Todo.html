@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <link rel="shortcut icon" type="image/png" href="favicon.png">
+  <title>To-Do</title>
+  <link href="Personal-Project.css" type="text/css" rel="stylesheet"></link>
+  <link href="Personal-Project-Todo.css" type="text/css" rel="stylesheet"></link>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat+Alternates:ital,wght@0,100;1,400&family=Nunito:wght@300;700&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<div class="grid">
+
+  <div id="header">
+    <img class="logo" src="hourglass.png"></img>
+    <a href="Personal-Project-Landing-Page.html" class="title">Tempus</a>
+    <img src="undraw_male_avatar_323b.svg" alt="avatar" id="usericon">
+    <div id="username">Yukiko Nii &nbsp;<span id="arrow">&#9660;</span></div>
+
+    <div class="dropdown">
+      <div class="settings">Settings</div>
+      <div class="logout">Log out</div>
+    </div>
+</div>
+
+
+<div id="iconbar">
+    <div class="menu">
+    <img src="Hamburger Menu2.png" alt="Hamburger Menu" class="sideimg">
+  </div>
+<a  href="Personal-Project-Home.html">
+  <img src="Home2.png" alt="home" class="sideimg">
+  <div class="icon home">Home</div>
+</a>
+
+<a href="Personal-Project-Stopwatch.html">
+  <img src="Clock2.png" alt="clock" class="sideimg">
+  <div class="icon time">Timer/Stopwatch</div>
+</a>
+<a href="Personal-Project-Todo.html" class="selected">
+  <img src="Todo3.png" alt="todo" class="sideimg">
+  <div class="icon todo">To-Do</div></a>
+<a href="Personal-Project-Calendar.html">
+  <img src="Calendar2.png" alt="calendar" class="sideimg">
+  <div class="icon calendar">Calendar</div></a>
+</div>
+
+<div class="todofunction">
+  <div id="todo">
+    <button id="add">+</button>
+    <div id="todomodal">
+      <div class="modal_content">
+        <div id="heading">New Task</div>
+        <div id="title">
+          <label id="titlelabel">TITLE<span>*</span></label>
+        <input type="text" id="titleinput">
+      </div>
+        <div id="description">
+          <label id="deslabel">DESCRIPTION</label>
+        <textarea type="text" id="desinput"></textarea>
+      </div>
+        <div id="options">
+          <label id="oplabel">OPTIONS</label>
+          <div id="dandt">
+          <label id="datelabel">Due Date</label>
+          <input type="date" id="date">
+          <input type="time" id="time">
+          <Label id="remlabel">Reminder</label>
+          <label id="reminder">
+          <input type="checkbox">
+            <span id="remtoggle"></span>
+          </label>
+        </div>
+        <div id="tag">
+          <label id="taglabel">Tag</label>
+          <div class="tag-container">
+            <div class="tag-box" id="tag-box">
+              <input></input>
+            </div>
+          </div>
+        </div>
+        <div id="priority">
+          <label id="prlabel">Priority</label>
+          <select id="prchoice">
+            <option>High</option>
+            <option>Medium</option>
+            <option selected="selected">Low</option>
+          </select>
+        </div>
+        </div>
+        <button id="save">Add</button>
+        <button id="close">&times;</button>
+  </div>
+    </div>
+    <div id="list"></div>
+    </div>
+
+
+
+<div id="right">
+  <div id="tagslist">
+    <div id="tagHr">Tags &nbsp;<span id="tagArrow">&#9650;</span></div>
+  </div>
+  <div id="prioritylist">Priority &nbsp;<span id="prArrow">&#9650;</span></div>
+    <div class="pr" id="high">High</div>
+    <div class="pr" id="medium">Medium</div>
+    <div class="pr" id="low">Low</div>
+</div>
+
+<div id="right2">
+
+</div>
+
+</div>
+</div>
+
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<!-- JavaScript -->
+  <script src="Personal-Project-Todo.js"></script>
+  <script src="Personal-Project-Menu.js"></script>
+</body>
+</html>

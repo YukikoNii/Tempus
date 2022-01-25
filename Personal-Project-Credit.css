@@ -1,0 +1,77 @@
+* {
+  color:#525252;
+  }
+
+.grid {
+  display:grid;
+  width:100vw;
+  height:100vh;
+}
+
+/* header */
+.login {
+  grid-column:5;
+  color:#525252;
+}
+
+.signup {
+  color:#525252;
+}
+.title, .login, .signup {
+  align-self:center;
+  text-decoration:none;
+}
+
+/* section */
+
+section {
+  display:grid;
+  grid-template-columns:repeat(auto-fit, minmax(34em, 1fr));
+  grid-gap:1em;
+  background-color: #EDFFF0;
+  height:calc(100% - 5em);
+  margin-top:5em;
+  width:100%;
+}
+
+/* image */
+
+.creditImage {
+  height:100%;
+  width:80%;
+  justify-self:center;
+  align-self:center;
+  margin:0em 0em 2em 4em;
+}
+
+/* content */
+
+.Credits {
+  background-color: white;
+  border-radius:4em;
+  height:36em;
+  width:65%;
+  box-shadow: 10px 10px 20px #bbb;
+  padding:2em;
+  margin:1em;
+  justify-self:center;
+  align-self:center;
+  display:grid;
+  grid-template-rows:10% 80%;
+  color:#525252;
+}
+
+span {
+  font-size:2em;
+  font-weight: bold;
+  justify-self:center;
+}
+
+li {
+  line-height: 2em;
+}
+
+.timeDate {
+  text-decoration:none;
+  color:#525252;
+}
