@@ -642,8 +642,9 @@ if (nowDate >= remDate) {
   }
 
   Notification.onclose = function () {
-      due[i].classList.remove('due');
+    console.log('hello');
   }
+
 
   let alertM = document.createElement('span');
   alertM.className = 'alertM';
