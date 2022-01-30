@@ -144,6 +144,15 @@ lowBtn.innerHTML = 'Low <span>' + lowIndex + '</span>';
 medBtn.innerHTML = 'Medium <span>' + medIndex + '</span>';
 highBtn.innerHTML = 'High <span>' + highIndex + '</span>';
 
+let liMes = document.createElement('span');
+liMes.innerHTML = 'There is no task at the moment.'
+let list = document.querySelector('#list');
+liMesInterval = setTimeout(message, 200);
+function message() {
+  if (list.innerHTML === '') {
+    list.appendChild(liMes);
+  }
+  }
 
 
 /*
@@ -264,7 +273,6 @@ function save () {
     highBtn.innerHTML = 'High <span>' + highIndex + '</span>';
   }
   // add to DOM
-  let list = document.getElementById('list');
   list.appendChild(entry);
   modal.style.display = 'none';
 
@@ -274,6 +282,12 @@ function save () {
 
 
   window.localStorage.setItem('savedTodo' + entry.id, entry.outerHTML);
+
+  // check if there is any to-do
+  if ( list.contains(liMes) === true ) {
+  list.removeChild(liMes);
+}
+
 } else {
   alert('Please enter a title.');
   titleinput.style = 'border:2px solid #C43D3D';
@@ -333,6 +347,11 @@ function complete(event) {
     highBtn.innerHTML = 'High <span>' + highIndex + '</span>';
   }
   if (chosenbox.checked = true) {
+    if (list.childElementCount === 1) {
+      setTimeout(function() {
+        list.appendChild(liMes);
+      }, 100);
+        }
     window.localStorage.removeItem('savedTodo' + todo.id);
     todo.style.opacity = '0';
     setTimeout(function() {
@@ -530,10 +549,9 @@ function getEntries () {
     let key = window.localStorage.key(i);
     if (key.slice(0,2) === 'sa') {
       let entry = window.localStorage.getItem(key);
-      let list = document.getElementById('list');
       list.innerHTML += entry;
     }
-  }
+    }
   // add event listener to checkbox for complete
   let checkbox = document.querySelectorAll('.checkbox');
   for (var i = 0; i < checkbox.length; i++) {
@@ -621,6 +639,10 @@ if (nowDate >= remDate) {
         showNotification();
       }
     });
+  }
+
+  Notification.onclose = function () {
+      due[i].classList.remove('due');
   }
 
   let alertM = document.createElement('span');
