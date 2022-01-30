@@ -220,7 +220,7 @@ function save () {
   let dateinput = document.getElementById('date').value;
   let timeinput = document.getElementById('time').value;
   let date = document.createElement('div');
-  date.className = 'entrydate';
+  date.className = 'entrydate due';
   date.id = titleinput.value + '2';
   date.innerText =  'Due by: ' + dateinput + ' ' + timeinput;
   if (dateinput !== '') {
@@ -586,7 +586,7 @@ window.addEventListener('beforeunload', function () {
 })
 
 //reminders
-
+let index = 0;
 let interval2 = setInterval(deadline, 1000);
 
 function deadline () {
@@ -595,29 +595,29 @@ function deadline () {
     right2.innerHTML = '';
   }
 
-  let entrydate = document.querySelectorAll('.entrydate');
-
-for (var i = 0; i < entrydate.length; i++) {
-  let text = entrydate[i].innerText;
-  let remName = entrydate[i].id;
+let due = document.querySelectorAll('.due');
+for (var i = 0; i < due.length; i++) {
+  let text = due[i].innerText;
+  let remName = due[i].id;
 
 let remDate = new Date(text.substr(8));
 let nowDate = new Date();
 
 if (nowDate >= remDate) {
 
+
   function showNotification () {
-    const notification = new Notification(remName.substr(0,remName.length - 1), {
-      body: "Due date has passed.",
-      icon:"favicon.png"
+    const notification = new Notification('To-Do Reminder:', {
+      body: remName.substr(0,remName.length - 1) + " is due today.",
+      icon:'favicon.png'
     })
-    console.log(notification);
+
   }
   if (Notification.permission === 'granted') {
     showNotification();
-  } else if (Notification.permission !== "denied") {
+  } else if (Notification.permission !== 'denied') {
     Notification.requestPermission().then(permission => {
-      if (permission === "granted") {
+      if (permission === 'granted') {
         showNotification();
       }
     });
@@ -629,7 +629,24 @@ if (nowDate >= remDate) {
   let dateStr = dateObj.toLocaleTimeString();
   alertM.innerText = remName.substr(0,remName.length - 1) + ' was due on: ' + remDate.toString().slice(0,15);
   right2.appendChild(alertM);
-  let alertBtn = document.createElement('span');
+  var alertBtn = document.createElement('span');
+  alertBtn.className = 'alertClose';
+  alertBtn.innerHTML = '&times';
+  alertM.appendChild(alertBtn);
 }
 }
 }
+
+
+window.addEventListener('click', function (event) {
+  let target = event.target;
+  if (target.className === 'alertClose') {
+    entryName = target.parentElement.innerHTML.split(' ')[0];
+    let entry = document.getElementById(entryName);
+    if (entry !== null) {
+    let date = entry.childNodes[3];
+    date.classList.remove('due');
+    localStorage.setItem('savedTodo' + entry.id, entry.outerHTML);
+  }
+  }
+})
