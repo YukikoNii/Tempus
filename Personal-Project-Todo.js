@@ -607,11 +607,11 @@ let nowDate = new Date();
 if (nowDate >= remDate) {
 
   function showNotification () {
-    const notification = new Notification( {
-      title: remName.substr(0,remName.length - 1),
+    const notification = new Notification(remName.substr(0,remName.length - 1), {
       body: "Due date has passed.",
       icon:"favicon.png"
     })
+    console.log(notification);
   }
   if (Notification.permission === 'granted') {
     showNotification();
@@ -622,7 +622,7 @@ if (nowDate >= remDate) {
       }
     });
   }
-  */
+
   let alertM = document.createElement('span');
   alertM.className = 'alertM';
   let dateObj = new Date();
