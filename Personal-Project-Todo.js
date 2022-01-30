@@ -160,7 +160,20 @@ SAVE FUNCTION BELOW
 */
 
 function save () {
+  let entryList = document.getElementsByClassName('entry');
+  let idArray = [];
+  let idIndex = 0;
+  for (var i = 0; i < entryList.length; i++) {
+    idArray.push(entryList[i].id);
+  }
+  for (var i = 0; i < idArray.length; i++) {
+    if (idArray[i] === titleinput.value) {
+      idIndex = 1;
+      console.log(idIndex);
+    }
+  }
   tags = [];
+  if (idIndex === 0) {
   if (titleinput.value != '') {
   // create an entry
   let entry = document.createElement('div');
@@ -283,10 +296,13 @@ function save () {
   }
 }
   window.localStorage.setItem('savedTodo' + entry.id, entry.outerHTML);
-
-
 } else {
   alert('Please enter a title.');
+  titleinput.style = 'border:2px solid #C43D3D';
+}
+
+} else {
+  alert('A task with the same name already exists');
   titleinput.style = 'border:2px solid #C43D3D';
 }
 
@@ -304,7 +320,6 @@ END OF SAVE FUNCTION
 */
 
 titleinput.addEventListener('keyup', addenter);
-desinput.addEventListener('keyup', addenter);
 prlabel.addEventListener('keyup', addenter);
 time.addEventListener('keyup', addenter);
 date.addEventListener('keyup', addenter);
@@ -573,3 +588,23 @@ function wrapperFunction (event) {
   expand(event, 0);
 }
 }
+
+// get due dates
+let getDate =  document.getElementsByClassName('entrydate');
+let getDateArr = [];
+let entryIdArr = [];
+
+window.addEventListener('beforeunload', function () {
+for (var i = 0; i < getDate.length; i++) {
+  getDateArr.push(getDate[i].innerHTML.slice(8,18));
+  let id = getDate[i].id;
+  entryIdArr.push(getDate[i].id.substr(0, id.length - 1));
+}
+
+});
+window.addEventListener('beforeunload', function () {
+  window.localStorage.setItem('getDateArr', JSON.stringify(getDateArr));
+  window.localStorage.setItem('entryIdArr', JSON.stringify(entryIdArr));
+})
+
+//

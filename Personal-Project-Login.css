@@ -38,7 +38,7 @@
 
 .login {
   display:grid;
-  grid-template-rows:0.8fr 2fr 0.8fr 2fr 1fr 2fr;
+  grid-template-rows:repeat(2, 0.8fr 2fr), 1fr 2fr;
 
 }
 
@@ -92,6 +92,13 @@ label {
   color:#026670;
 }
 
-span {
+span:not(.forgot) {
   color:#C43D3D;
+}
+
+.forgot > a {
+  color:#525252;
+  font-weight:normal;
+  text-decoration:underline;
+  cursor:pointer;
 }

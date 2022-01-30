@@ -71,9 +71,9 @@
   cursor:pointer;
 }
 
-.dropdown {
+.dropDownContent {
   position:absolute;
-  margin-left:88%;
+  margin-left:73%;
   margin-top:5%;
   background-color:white;
   padding-top:0.8em;
@@ -88,15 +88,22 @@
   z-index:2;
 }
 
-.dropdown > div {
+.dropDownContent > div {
   height:2em;
   align-self:start;
   padding-left:0.7em;
   cursor:default;
 }
 
-.dropdown > div:hover {
+.dropDownContent > div:hover {
   background-color:#eee;
+}
+
+.dropDown {
+  position:absolute;
+  display:none;
+  width:100vw;
+  height:100vh;
 }
 /* iconbar */
 

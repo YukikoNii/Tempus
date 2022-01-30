@@ -205,3 +205,35 @@ function getBg() {
     clockDivs[i].style.color = window.localStorage.getItem('bgcolor');
   }
 }
+
+// load today's task
+
+let getDateArr = JSON.parse(window.localStorage.getItem('getDateArr'));
+let entryIdArr = JSON.parse(window.localStorage.getItem('entryIdArr'));
+
+let todayDate = new Date();
+let dateStr = todayDate.getFullYear() + '-0' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
+let tasks  = document.querySelector('.task');
+let taskIs = true;
+window.addEventListener('load', function () {
+  if (getDateArr !== null) {
+  if (getDateArr.length !== 0) {
+    for (let i = 0; i < getDateArr.length; i++) {
+      if (getDateArr[i] === dateStr) {
+        let ul = document.createElement('ul');
+        tasks.appendChild(ul);
+        let eventTask = document.createElement('li');
+        eventTask.className = 'toTask';
+        // display the title of the task
+        eventTask.innerHTML = entryIdArr[i];
+        ul.appendChild(eventTask);
+      }
+  }
+}
+} else {
+  tasks.innerHTML += '<div class="noTask">There is no task for today.<br> <div class="linkTodo">add new task</div></div>';
+    document.querySelector('.linkTodo').addEventListener('click', function () {
+      location.href = 'Personal-Project-Todo.html';
+    })
+  }
+});

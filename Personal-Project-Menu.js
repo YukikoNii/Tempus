@@ -57,22 +57,30 @@ User info
 window.addEventListener('click', dropdown);
 let userName = document.getElementById('username');
 let userIcon = document.getElementById('usericon');
-let dropMenu = document.querySelector('.dropdown');
+let dropMenu = document.querySelector('.dropDown');
+let dropContent = document.querySelector('.dropDownContent');
 // user menu drop down
 function dropdown (event) {
   let arrow = document.getElementById('arrow');
   if ((event.target === userIcon || event.target === userName || event.target === arrow)) {
     if (dropMenu.style.display === 'block') {
         dropMenu.style.display = 'none';
+        dropContent.style.display = 'none';
         arrow.innerHTML = '&#9660;';
   }  else  {
       dropMenu.style.display = 'block';
+      dropContent.style.display = 'block';
       arrow.innerHTML = '&#9650;';
   }
 }
+if (event.target === dropMenu) {
+  dropMenu.style.display = 'none';
+  dropContent.style.display = 'none';
+  arrow.innerHTML = '&#9660;';
+}
 }
 // setting username
-let newName = localStorage.getItem('Username');
+let newName = JSON.parse(window.localStorage.getItem('loginInfo')).Username;
 
 window.addEventListener('load', function () {
   userName.innerHTML = newName + '&nbsp;<span id="arrow">&#9660;</span>';
@@ -95,5 +103,8 @@ function setting() {
 // logo link to homepage
 
 document.querySelector('.logo').addEventListener('click', function () {
-  location.href = 'Personal-Project-Landing-Page.html';
+  location.href = 'Personal-Project-Home.html';
 });
+
+// user icon
+usericon.src = window.localStorage.getItem('fileSrc');

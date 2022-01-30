@@ -175,6 +175,17 @@
   color:#525252;
 }
 
+.linkTodo {
+  text-decoration: underline;
+  cursor:pointer;
+}
+
+.noTask {
+  text-align:center;
+  font-size: 1.5em;
+}
+
+
 .clock > div {
   text-align:center;
   color:white;

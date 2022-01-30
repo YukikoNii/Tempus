@@ -3,8 +3,6 @@ let submit = document.querySelector('.submit');
 submit.addEventListener('click', save);
 
 
-//create an array
-let infoarray = [];
 
 let email = document.getElementById('Email');
 email.addEventListener('change', validEmail);
@@ -25,23 +23,20 @@ function save () {
 
   if (password.value !== '' && conPassword.value !== '' && username.value !== '' && email.value !== '' && emailIndex === 1 && passIndex === 1) {
   // create an object that saves userinfo
-  let userinfo = {
+  let userInfo = {
   'Username': username.value,
   'Email': email.value,
   'Password': password.value
 }
 
-// push object into an array
-infoarray.push(userinfo);
 // save on local storage
-localStorage.setItem('loginInfo', JSON.stringify(infoarray));
+localStorage.setItem('loginInfo', JSON.stringify(userInfo));
 localStorage.setItem('Username', username.value);
 // redirect
 setTimeout(function(){
   location.href = 'Personal-Project-Home.html';
 },100)
 
-console.log(infoarray);
   } else {
     alert('Invalid');
   }

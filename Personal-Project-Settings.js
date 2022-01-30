@@ -1,17 +1,56 @@
-/*
-get the file name
-*/
-
-document.querySelector('.proUpload').addEventListener('change', function() {
-  let fileValue = this.value;
-  let fileName = fileValue.slice(12);
-  let profilePic = document.querySelector('.profilePic');
-  let profilePic2 = document.querySelector('#usericon');
-  let profilePic3 = document.querySelector('.menuPic');
-  profilePic.src = fileName;
-  profilePic2.src = fileName;
-  profilePic3.src = fileName;
+let proModal = document.querySelector('.proModal');
+window.addEventListener('click', function() {
+  if (event.target === proModal) {
+    proModal.style.display = 'none';
+  }
 });
+document.querySelector('.proChoose').addEventListener('click', function() {
+  proModal.style.display = 'block';
+})
+document.querySelector('.proClose').addEventListener('click', function () {
+  proModal.style.display = 'none';
+});
+
+let proImg = document.querySelectorAll('.proImg');
+
+for (var i = 0; i < proImg.length; i++) {
+  proImg[i].addEventListener('click', select);
+}
+
+let profilePic = document.querySelector('.profilePic');
+let profilePic2 = document.querySelector('#usericon');
+let profilePic3 = document.querySelector('.menuPic');
+
+window.addEventListener('load', function () {
+if (localStorage.getItem('fileSrc') === null) {
+  window.localStorage.setItem('defFile', 'undraw_male_avatar_323b.svg');
+  console.log(localStorage);
+}
+});
+
+/* get the file name */
+function select ()  {
+  let fileSrc = this.src;
+  profilePic.src = fileSrc;
+  profilePic2.src = fileSrc;
+  profilePic3.src = fileSrc;
+  window.localStorage.setItem('fileSrc', fileSrc);
+  window.localStorage.removeItem('defFile');
+};
+
+window.addEventListener('load', function () {
+  let defFile = localStorage.getItem('defFile');
+  let fileSrc = localStorage.getItem('fileSrc');
+  if (defFile === null) {
+    profilePic.src = fileSrc;
+    profilePic2.src = fileSrc;
+    profilePic3.src = fileSrc;
+  } else {
+    profilePic.src = defFile;
+    profilePic2.src = defFile;
+    profilePic3.src = defFile;
+  }
+})
 
 /*
 enable the inputs
@@ -53,14 +92,49 @@ function cancel () {
 }
 
 function save() {
+  // get the index of the textbox that is focused
   let sIndex = Array.prototype.indexOf.call(saveBtns, this);
-  this.style.display = 'none';
-  cancelBtns[sIndex].style.display = 'none';
-  accBtns[sIndex].style.display = 'block';
-  accTexts[sIndex].disabled = true;
-  window.localStorage.setItem(accTexts[sIndex].name, accTexts[sIndex].value);
-  userName.innerHTML = accTexts[0].value + '&nbsp;<span id="arrow">&#9660;</span>';
+  // check if the email is in the correct format
+  let emailIndex = 0;
+  let expression = /^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$/;
+  if (accTexts[1].value.match(expression)) {
+    emailIndex = 1;
+  } else {
+    emailIndex = 0;
 }
+  if (accTexts[sIndex].value !== '') {
+    if (emailIndex === 1) {
+    this.style.display = 'none';
+    cancelBtns[sIndex].style.display = 'none';
+    accBtns[sIndex].style.display = 'block';
+    accTexts[sIndex].disabled = true;
+    accTexts[sIndex].style.border = '1px solid #525252';
+    window.localStorage.setItem(accTexts[sIndex].name, accTexts[sIndex].value);
+    userName.innerHTML = accTexts[0].value + '&nbsp;<span id="arrow">&#9660;</span>';
+  } else {
+    alert('email is invalid');
+    accTexts[sIndex].style.border = '1px solid #c43d3d';
+  }
+}   else {
+      alert('cannot be blank');
+      accTexts[sIndex].style.border = '1px solid #c43d3d';
+  }
+
+  let retrieveInfo = JSON.parse(window.localStorage.getItem('loginInfo'));
+
+
+  let newInfo = {
+    'Username': accTexts[0].value,
+    'Email':accTexts[1].value,
+    'Password':accTexts[2].value
+  }
+
+  window.localStorage.setItem('loginInfo', JSON.stringify(newInfo));
+
+}
+
+
+
 
 // delete account
 function deleteAcc () {
@@ -84,7 +158,7 @@ window.addEventListener('load', getInfo);
 // setting the default values of the inputs
 function getInfo () {
   let loginInfo = JSON.parse(window.localStorage.getItem('loginInfo'));
-  accTexts[0].value = loginInfo[0].Username;
-  accTexts[1].value = loginInfo[0].Email;
-  accTexts[2].value = loginInfo[0].Password;
+  accTexts[0].value = loginInfo.Username;
+  accTexts[1].value = loginInfo.Email;
+  accTexts[2].value = loginInfo.Password;
 }
