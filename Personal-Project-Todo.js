@@ -284,6 +284,22 @@ function save () {
 
   function deadline() {
   if (nowDate >= remDate) {
+
+    function showNotification () {
+      const notification = new Notification( {
+        title: remName.substr(0,remName.length - 1),
+        body: "Due date has passed."
+      })
+    }
+    if (Notification.permission === 'granted') {
+      showNotification();
+    } else if (Notification.permission !== "denied") {
+      Notification.requestPermission().then(permission => {
+        if (permission === "granted") {
+          showNotification();
+        }
+      });
+    }
     let alertM = document.createElement('span');
     let right2 = document.querySelector('#right2');
     alertM.className = 'alertM';
