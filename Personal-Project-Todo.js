@@ -169,7 +169,6 @@ function save () {
   for (var i = 0; i < idArray.length; i++) {
     if (idArray[i] === titleinput.value) {
       idIndex = 1;
-      console.log(idIndex);
     }
   }
   tags = [];
@@ -273,44 +272,7 @@ function save () {
   document.getElementById('titleinput').value = '';
   document.getElementById('desinput').value = '';
 
-  let entrydate = document.querySelectorAll('.entrydate');
-  for (var i = 0; i < entrydate.length; i++) {
-    let text = entrydate[i].innerText;
-    let remName = entrydate[i].id;
 
-  let remDate = new Date(text.substr(8));
-  let nowDate = new Date();
-  var interval = setInterval(deadline, 1000);
-
-  function deadline() {
-  if (nowDate >= remDate) {
-
-    function showNotification () {
-      const notification = new Notification( {
-        title: remName.substr(0,remName.length - 1),
-        body: "Due date has passed."
-      })
-    }
-    if (Notification.permission === 'granted') {
-      showNotification();
-    } else if (Notification.permission !== "denied") {
-      Notification.requestPermission().then(permission => {
-        if (permission === "granted") {
-          showNotification();
-        }
-      });
-    }
-    let alertM = document.createElement('span');
-    let right2 = document.querySelector('#right2');
-    alertM.className = 'alertM';
-    let dateObj = new Date();
-    let dateStr = dateObj.toLocaleTimeString();
-    alertM.innerText = remName.substr(0,remName.length - 1) + ' was due at: ' + dateStr.substr(0,4);
-    right2.appendChild(alertM);
-    clearInterval(interval);
-  }
-  }
-}
   window.localStorage.setItem('savedTodo' + entry.id, entry.outerHTML);
 } else {
   alert('Please enter a title.');
@@ -623,4 +585,51 @@ window.addEventListener('beforeunload', function () {
   window.localStorage.setItem('entryIdArr', JSON.stringify(entryIdArr));
 })
 
-//
+//reminders
+
+let interval2 = setInterval(deadline, 1000);
+
+function deadline () {
+  let right2 = document.querySelector('#right2');
+  if (right2.innerHTML !== '') {
+    right2.innerHTML = '';
+  }
+
+  let entrydate = document.querySelectorAll('.entrydate');
+
+for (var i = 0; i < entrydate.length; i++) {
+  let text = entrydate[i].innerText;
+  let remName = entrydate[i].id;
+
+let remDate = new Date(text.substr(8));
+let nowDate = new Date();
+
+if (nowDate >= remDate) {
+
+  function showNotification () {
+    const notification = new Notification( {
+      title: remName.substr(0,remName.length - 1),
+      body: "Due date has passed.",
+      icon:"favicon.png"
+    })
+  }
+  if (Notification.permission === 'granted') {
+    showNotification();
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(permission => {
+      if (permission === "granted") {
+        showNotification();
+      }
+    });
+  }
+  */
+  let alertM = document.createElement('span');
+  alertM.className = 'alertM';
+  let dateObj = new Date();
+  let dateStr = dateObj.toLocaleTimeString();
+  alertM.innerText = remName.substr(0,remName.length - 1) + ' was due on: ' + remDate.toString().slice(0,15);
+  right2.appendChild(alertM);
+  let alertBtn = document.createElement('span');
+}
+}
+}
