@@ -147,12 +147,7 @@ highBtn.innerHTML = 'High <span>' + highIndex + '</span>';
 let liMes = document.createElement('span');
 liMes.innerHTML = 'There is no task at the moment.'
 let list = document.querySelector('#list');
-liMesInterval = setTimeout(message, 200);
-function message() {
-  if (list.innerHTML === '') {
-    list.appendChild(liMes);
-  }
-  }
+
 
 
 /*
@@ -583,6 +578,10 @@ for (var i = 0; i < title.length; i++) {
 function wrapperFunction (event) {
   expand(event, 0);
 }
+
+if (list.innerHTML === '') {
+      list.appendChild(liMes);
+    }
 }
 
 // get due dates
