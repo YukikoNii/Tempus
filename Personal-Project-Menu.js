@@ -107,9 +107,8 @@ document.querySelector('.logo').addEventListener('click', function () {
 });
 
 // user icon
+usericon.src = 'undraw_male_avatar_323b.svg';
 let fileSrc = localStorage.getItem('fileSrc');
 if (fileSrc !== null) {
   usericon.src = fileSrc;
-} else {
-  usericon.src = 'undraw_male_avatar_323b.svg';
-}
+} 
