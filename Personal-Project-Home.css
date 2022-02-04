@@ -146,6 +146,8 @@
   font-size: 1.5em;
   padding:1em;
   color:#525252;
+  user-select: text;
+  cursor:text;
 }
 
 .facts > span {
@@ -155,6 +157,8 @@
   align-self:center;
   font-size: 2em;
   color:#525252;
+  user-select: text;
+  cursor:text;
 }
 
 .task {
@@ -173,6 +177,8 @@
   align-self:center;
   font-size: 2em;
   color:#525252;
+  user-select: text;
+  cursor:text;
 }
 
 .linkTodo {
@@ -183,8 +189,13 @@
 .noTask {
   text-align:center;
   font-size: 1.5em;
+  user-select: text;
+  cursor:text;
 }
 
+.toTask {
+  user-select: text;
+}
 
 .clock > div {
   text-align:center;

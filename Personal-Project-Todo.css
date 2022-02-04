@@ -97,6 +97,7 @@ modal
   padding-left:60px;
   cursor:text;
   font-weight:bold;
+  user-select: text;
 }
 
 /* modal title */
@@ -112,6 +113,7 @@ modal
 #titlelabel {
   grid-row:1;
   cursor:text;
+  user-select: text;
 }
 
 #titlelabel > span {
@@ -147,6 +149,7 @@ modal
 #deslabel {
   grid-row:1;
   cursor:text;
+  user-select: text;
 }
 
 #desinput {
@@ -187,6 +190,7 @@ modal
   font-weight:bold;
   cursor:text;
   font-size:1.2em;
+  user-select: text;
 }
 
 
@@ -196,6 +200,7 @@ modal
   align-self:center;
   cursor:text;
   font-size:1em;
+  user-select: text;
 }
 
 #date {
@@ -226,6 +231,7 @@ modal
   align-self:center;
   cursor:text;
   font-size:1em;
+  user-select: text;
 }
 /*
 reminder toggle
@@ -288,7 +294,9 @@ input:checked + #remtoggle:before {
   grid-row:3;
   grid-column:1/5;
   display:grid;
-  grid-template-columns:1fr 6fr;
+  grid-template-columns:15% fit-content(85%);
+  width:100%;
+  height:100%;
 }
 
 #taglabel {
@@ -296,10 +304,14 @@ input:checked + #remtoggle:before {
   align-self:center;
   cursor:text;
   font-size:1em;
+  user-select: text;
 }
 
 .tag-container {
   grid-column:2;
+  width:100%;
+  height:100%;
+  overflow:hidden;
 }
 
 #tag-box {
@@ -308,12 +320,13 @@ input:checked + #remtoggle:before {
   border-radius:5px;
   display:flex;
   resize:none;
+  overflow: scroll;
 }
 
 
 .tag {
   padding:0.1em;
-  margin:0.1em;
+  margin:0.05em;
   align-items:center;
   border-radius:3px;
   display:flex;
@@ -331,6 +344,7 @@ input:checked + #remtoggle:before {
   padding:0px;
   outline:none;
   border:0;
+  overflow: scroll;
 }
 
 .material-icons {
@@ -351,6 +365,7 @@ input:checked + #remtoggle:before {
   align-self:center;
   cursor:text;
   font-size:15px;
+  user-select: text;
 }
 
 #prchoice {
@@ -524,16 +539,20 @@ input:checked + #remtoggle:before {
   background-color:white;
   padding:0.5em;
   box-shadow: 0px 0px 10px #EAEAEA99;
-
+  overflow-y:scroll;
 }
 
 /* tags list */
-#tagslist > div {
+#tagHr {
+  cursor:pointer;
   font-weight: bold;
 }
 
-#tagHr {
-  cursor:pointer;
+.tagE {
+  cursor:default;
+  border-radius:0.18em;
+  overflow-wrap: break-word;
+  padding:0.1em;
 }
 
 /* priority list */
@@ -543,8 +562,14 @@ input:checked + #remtoggle:before {
   font-weight: bold;
 }
 
+
+
 .pr {
   text-indent:5%;
+  border-radius:0.18em;
+  cursor:default;
+  transition: background-color 0.2s;
+  margin:0.2em;
 }
 
 #high {
@@ -578,10 +603,6 @@ input:checked + #remtoggle:before {
   font-weight: bold;
 }
 
-#high, #medium, #low {
-  cursor:default;
-  transition: background-color 0.2s;
-}
 
 #right2 {
   margin:1em 1em 1em 0em;
@@ -590,8 +611,17 @@ input:checked + #remtoggle:before {
   background-color:white;
   border-radius:1em;
   display:grid;
-  grid-template-rows:repeat(5, 1fr);
+  grid-template-rows:1fr 7fr;
   overflow-y:scroll;
+  padding:0.5em;
+}
+
+
+.rightTitle {
+  text-align:center;
+  align-self:center;
+  line-height:1.5em;
+  font-weight: bold;
 }
 
 .alertM {
@@ -600,9 +630,17 @@ input:checked + #remtoggle:before {
   padding:0.3em 0.5em 0.1em 0.1em;
   display:grid;
   grid-template-columns:7fr 1fr;
+  min-height:1.5em;
 }
 
 .alertClose {
   justify-self:center;
   cursor: pointer;
+}
+
+.liMes {
+  justify-self:center;
+  margin:15em auto;
+  cursor:text;
+  user-select:text;
 }

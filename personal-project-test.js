@@ -212,7 +212,6 @@ timerstop.addEventListener('click', stopTmr);
 let timerreset = document.getElementById('resetTmr');
 timerreset.addEventListener('click', resetTmr);
 let timeTmr;
-let alarmbeep = document.getElementById('alarmbeep');
 
 // index to show the state of timer
 let tmrIndex = 0;
@@ -245,8 +244,13 @@ function startTmr () {
   timerstop.style.display = 'block';
 
 if (starting === 0) {
+  let alarmbeep = document.getElementById('alarmbeep');
+  alarmbeep.load();
   alarmbeep.play();
-  alert('Time is up!');
+  let myTimeout = setTimeout(timeUp, 1000);
+  function timeUp () {
+    alert('Time is up!');
+  }
   clearInterval(timeTmr);
   timerstart.style.display = "block";
   timerstop.style.display = 'none';
@@ -286,3 +290,15 @@ function resetTmr () {
   secTime = 0;
   starting = 0;
 }
+
+// get alarm Sound
+let source = document.querySelector('#alarmbeep > source');
+window.addEventListener('load', function () {
+  let audioUrl = JSON.parse(localStorage.getItem('audioObj'))[0];
+  source.src = audioUrl;
+  if (audioUrl !== 'Alarm beep.mp3') {
+    source.type = 'audio/wav';
+  } else {
+    source.type = 'audio/mpeg'
+  }
+})

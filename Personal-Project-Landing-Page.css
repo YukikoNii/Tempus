@@ -213,6 +213,11 @@ section 2
 }
 
 
+#img4 {
+  grid-column:1;
+  margin-right:0.1em;
+  height:100%;
+}
 #phrase4 {
   grid-column:2;
 }

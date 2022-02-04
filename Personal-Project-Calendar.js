@@ -159,8 +159,25 @@ let entryIdArr = JSON.parse(window.localStorage.getItem('entryIdArr'));
     }
   }
 
-let todayDate = new Date();
-let dateStr = todayDate.getFullYear() + '-0' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
+  let todayDate = new Date();
+  let nowMonth = todayDate.getMonth() + 1;
+  let nowDate = todayDate.getDate();
+  let realMonth;
+  let realDate;
+
+  if (nowMonth < 10) {
+   realMonth = '0' + nowMonth;
+  } else {
+    realMonth = nowMonth;
+  }
+  if (nowDate < 10) {
+    realDate = '0' + nowDate;
+  } else {
+    realDate = nowDate;
+  }
+
+
+  let dateStr = todayDate.getFullYear() + '-' + realMonth + '-' + realDate;
 let today = document.querySelector('.today');
 if (today !== null) {
   for (let i = 0; i < getDateArr.length; i++) {

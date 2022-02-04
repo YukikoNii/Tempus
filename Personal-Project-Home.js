@@ -57,14 +57,33 @@ function update () {
 
 }
 
+function updateInterval () {
+
 var interval = setInterval(update, 1);
+
+}
 
 
 
 
 document.querySelector('.date').innerHTML = weekAr[week] + ', ' + monthAr[month] + ' ' + day +', ' +  year;
 
+window.addEventListener('load', function () {
+  let timeDis = document.querySelector('.timeDis');
+  let date = new Date();
+  let hourOfDay = date.toString().split(' ')[4].slice(0,2);
+  let greetings;
+  if (hourOfDay >= 0 && hourOfDay < 12 ) {
+    greetings = 'Good Morning';
+  } else if (hourOfDay >= 12 && hourOfDay <= 6){
+    greetings = 'Hello';
+  } else {
+    greetings = 'Good Evening';
+  }
 
+  timeDis.innerHTML = greetings;
+  let myTimeout = setTimeout(updateInterval, 3000);
+});
 /*
 
 display quote
@@ -212,11 +231,27 @@ let getDateArr = JSON.parse(window.localStorage.getItem('getDateArr'));
 let entryIdArr = JSON.parse(window.localStorage.getItem('entryIdArr'));
 
 let todayDate = new Date();
-let dateStr = todayDate.getFullYear() + '-0' + (todayDate.getMonth() + 1) + '-' + todayDate.getDate();
+let nowMonth = todayDate.getMonth() + 1;
+let nowDate = todayDate.getDate();
+let realMonth;
+let realDate;
+
+if (nowMonth < 10) {
+ realMonth = '0' + nowMonth;
+} else {
+  realMonth = nowMonth;
+}
+if (nowDate < 10) {
+  realDate = '0' + nowDate;
+} else {
+  realDate = nowDate;
+}
+
+
+let dateStr = todayDate.getFullYear() + '-' + realMonth + '-' + realDate;
 let tasks  = document.querySelector('.task');
 let taskIs = true;
 window.addEventListener('load', function () {
-  if (getDateArr !== null) {
   if (getDateArr.length !== 0) {
     for (let i = 0; i < getDateArr.length; i++) {
       if (getDateArr[i] === dateStr) {
@@ -229,7 +264,6 @@ window.addEventListener('load', function () {
         ul.appendChild(eventTask);
       }
   }
-}
 } else {
   tasks.innerHTML += '<div class="noTask">There is no task for today.<br> <div class="linkTodo">add new task</div></div>';
     document.querySelector('.linkTodo').addEventListener('click', function () {

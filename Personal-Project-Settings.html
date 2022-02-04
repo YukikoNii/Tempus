@@ -54,9 +54,9 @@
       <section>
         <div class="settingMenu">
           <img src="undraw_male_avatar_323b.svg" class="menuPic"></img>
-          <span>Account Settings</span>
-          <span>Display Settings</span>
-          <span>Notification Settings</span>
+          <span>Account</span>
+          <span>Display</span>
+          <span>Notification</span>
         </div>
         <div class="settingBody">
           <div class="body">
@@ -102,12 +102,38 @@
 
             </div>
           </div>
-          <!-- <div class="body"></div>
-          <div class="body"></div> -->
+          <div class="body two">
+            <span>Display</span>
+            <div class="account">
+            <div class="con Use">
+            <span>Username</span>
+            <input type="button" value="edit" class="accBtns">
+            <div class="btns">
+            <input type="button" value="cancel" class="cancel">
+            <input type="button" value="save" class="save">
+            </div>
+          </div></div>
         </div>
-      </section>
-
+          <div class="body three">
+            <span>Notification</span>
+            <div class="notif">
+            <div class="timer">
+            <span>Timer Alarm</span>
+            <select class="alSound" name="Alarm Sound">
+              <option value="Alarm beep.mp3" class="Default">Default</option>
+              <option value="mixkit-classic-alarm-995.wav" class="Alarm">Alarm</option>
+              <option value="mixkit-facility-alarm-908.wav">Train</option>
+              <option value="mixkit-flute-mobile-phone-notification-alert-2316.wav">Flute</option>
+              <option value="mixkit-uplifting-flute-notification-2317.wav">Flute2</option>
+              <option value="mixkit-guitar-notification-alert-2320.wav">Guitar</option>
+              <option value="mixkit-japanese-music-box-notification-697.wav">Music Box</option>
+            </select>
+            <input type="button" value="save" class="alBtn">
+          </div></div>
+        </div>
     </div>
+  </section>
+</div>
 
     <div class="delModal">
       <div class="delModalContent">
@@ -159,8 +185,10 @@
           <img class="proImg" src="leaves.png"></img>
         </div>
       </div>
+    </div>
 
-    <script src="Personal-Project-Settings.js"></script>
+      <!-- Javascript files -->
+    <script src="Personal-Project-Settings.js" class="script"></script>
     <script src="Personal-Project-Menu.js"></script>
   </body>
   </html>

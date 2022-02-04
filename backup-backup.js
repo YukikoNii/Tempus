@@ -501,11 +501,9 @@ function expand(event) {
   todo.style.marginTop = '0em';
   chosentitle.style.gridRows = '1';
   description.style.display = 'block';
-  if (date !== null) {
-    if (dateinput !== '' || arguments[1] === 0) {
-    date.style.display = 'block';
-  }
-  }
+  if (dateinput !== '' || arguments[1] === 0) {
+  date.style.display = 'block';
+}
 expand2 = 1;
 }
 else {
@@ -593,7 +591,7 @@ function tagExpand (event) {
   let tagsList = document.getElementById('tagsList');
   let tagArrow = document.getElementById('tagArrow');
   let tagHr = document.getElementById('tagHr');
-  if (event.target === tagHr || event.target === tagArrow) {
+  if (event.target === tagHr) {
     if (savedTags.length !== 0) {
   if (tagIndex === 1) {
       let tagsLabel = document.getElementsByClassName('tagE');

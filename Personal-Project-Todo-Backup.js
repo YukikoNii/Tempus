@@ -90,20 +90,16 @@ function addTags() {
 
 // add tag on enter
 input.addEventListener('keyup', enter);
-input.addEventListener('keyup', delTag);
+
 
 function enter(event) {
   // if Enter Key was pressed
   if (event.key === 'Enter') {
     if (input.value != '') {
-      if (input.value.includes(' ')) {
-        alert('Tag name can\'t contain a space.')
-      } else {
     tags.push(input.value);
     // add the tag to an array 'tag';
     input.value = '';
     addTags();
-  }
   }
   else {
     save();
@@ -111,27 +107,9 @@ function enter(event) {
   }
 }
 
-function delTag(event) {
-  // if delete key was pressed
-  if (event.key === 'Backspace') {
-    // if tag isn't empty
-    if (tags !== []) {
-      // get the name of the tag
-      let targetTag = tags[tags.length - 1];
-      //find the index of the tag
-      let index = tags.indexOf(targetTag);
-      // remove the tag from tag array
-      tags = [...tags.splice(0,index), ...tags.slice(index + 1)];
-      addTags();
-    }
-  }
-}
+document.addEventListener('click', remove);
 
-
-
-document.addEventListener('click', removeTag);
-
-function removeTag(event) {
+function remove(event) {
   let element = event.target;
   // if span was clicked
   if (element.tagName === 'SPAN') {
@@ -188,7 +166,7 @@ SAVE FUNCTION BELOW
 */
 
 let savedTags = [];
-let allTags = [];
+
 
 function save () {
   let entryList = document.getElementsByClassName('entry');
@@ -202,28 +180,21 @@ function save () {
       idIndex = 1;
     }
   }
-
-
-  if (idIndex === 0) {
-  if (titleinput.value != '') {
+  if (savedTags.length !== 0) {
     for (var i = 0; i < tags.length; i++) {
-      allTags.push(tags[i]);
-    }
-    console.log(allTags);
-
-    if (savedTags.length !== 0) {
-      for (var i = 0; i < tags.length; i++) {
-        if (savedTags.includes(tags[i]) !== true) {
-          savedTags.push(tags[i]);
-        }
-      }
-    } else {
-      for (var i = 0; i < tags.length; i++) {
+      if (savedTags.includes(tags[i]) !== true) {
         savedTags.push(tags[i]);
       }
     }
+  } else {
+    for (var i = 0; i < tags.length; i++) {
+      savedTags.push(tags[i]);
+    }
+  }
 
-
+  console.log(savedTags);
+  if (idIndex === 0) {
+  if (titleinput.value != '') {
   // create an entry
   let entry = document.createElement('div');
   // give it a class name
@@ -270,6 +241,7 @@ function save () {
   let dateinput = document.getElementById('date').value;
   let timeinput = document.getElementById('time').value;
   let date = document.createElement('div');
+  console.log(toggleBool);
   if (toggleBool == true) {
     date.className = 'entrydate due';
   } else {
@@ -286,12 +258,13 @@ function save () {
   let tagEach = document.createElement('div');
   tagEach.className = 'tagEach';
   tagEach.id = titleinput.value + '4';
+  console.log(tagEach.id);
   for (var i = 0; i < tags.length; i++) {
     tagEach.className += ' ' + tags[i];
   }
+  console.log(tagEach.className);
   entry.append(tagEach);
   tagEach.style.display = 'none';
-
 
 
   // priority
@@ -343,8 +316,6 @@ function save () {
   // check if there is any to-do
   if ( list.contains(liMes) === true ) {
   list.removeChild(liMes);
-
-
 }
 
 } else {
@@ -416,74 +387,8 @@ function complete(event) {
     setTimeout(function() {
       todo.remove();
     }, 50);
-
-    //
-    let unique = [];
-    /*for (var i = 0; i < allTags.length; i++) {
-      let val = allTags[i];
-      let index = unique.indexOf(val);
-      console.log(index);
-      if (index !== -1) {
-        unique.splice(index,1);
-      } else {
-          unique.push(val);
-        }
-      }*/
-      const count = {};
-      for (var element of allTags) {
-        if (count[element]) {
-          count[element] += 1;
-        } else {
-          count[element] = 1;
-        }
-       }
-
-for (var key in count) {
-if (count[key] === 1) {
-  unique.push(key);
-}
-}
-
-
-    let thisTag = document.getElementById(todo.id + '4').classList;
-    let newUnique = [];
-    for (var i = 0; i < thisTag.length; i++) {
-      if (unique.includes(thisTag[i]) === true) {
-        newUnique.push(thisTag[i]);
-      }
-    }
-
-    for (var i = 0; i < thisTag.length; i++) {
-      if (allTags.includes(thisTag[i]) === true) {
-        let index = allTags.indexOf(thisTag[i]);
-        allTags.splice(index,1);
-      }
-      if (preTagArr.includes(newUnique[i]) === true) {
-        let index = preTagArr.indexOf(newUnique[i]);
-        preTagArr.splice(index,1);
-      }
-      }
-
-
-    for (var i = 0; i < newUnique.length; i++) {
-      let index = savedTags.indexOf(newUnique[i]);
-      savedTags.splice(index,1);
-    }
-    let tagE = document.getElementsByClassName('tagE');
-    tagEArr = Array.from(tagE);
-
-    for (var i = 0; i < tagEArr.length; i++) {
-      if (newUnique.includes(tagEArr[i].innerHTML) === true) {
-        console.log('hi');
-        tagEArr[i].remove();
-      }
-    }
-    if (document.getElementsByClassName('tagE') === null) {
-      document.getElementById('tagArrow').innerHTML = '&9650;';
-    }
-}
-
-}
+  }
+  }
 
 // click on title to expand
 var expand2 = 0;
@@ -501,11 +406,9 @@ function expand(event) {
   todo.style.marginTop = '0em';
   chosentitle.style.gridRows = '1';
   description.style.display = 'block';
-  if (date !== null) {
-    if (dateinput !== '' || arguments[1] === 0) {
-    date.style.display = 'block';
-  }
-  }
+  if (dateinput !== '' || arguments[1] === 0) {
+  date.style.display = 'block';
+}
 expand2 = 1;
 }
 else {
@@ -567,86 +470,50 @@ function prExpand (event) {
 window.addEventListener('click', tagExpand);
 preTagArr = [];
 
-
-
-window.addEventListener('beforeunload', function () {
-  localStorage.setItem('tagsStore', JSON.stringify(savedTags));
-  localStorage.setItem('allTags', JSON.stringify(allTags));
-});
-
-window.addEventListener('load', function () {
-  let loadTags = JSON.parse(localStorage.getItem('tagsStore'));
-  let loadAllTags = JSON.parse(localStorage.getItem('allTags'));
-  if (loadTags !== []) {
-  for (var i = 0; i < loadTags.length; i++) {
-    savedTags.push(loadTags[i]);
-  }
-}
-  if (loadAllTags !== null) {
-  for (var i = 0; i < loadAllTags.length; i++) {
-    allTags.push(loadAllTags[i]);
-  }
-}
-})
 let tagIndex = 0;
 function tagExpand (event) {
   let tagsList = document.getElementById('tagsList');
   let tagArrow = document.getElementById('tagArrow');
   let tagHr = document.getElementById('tagHr');
-  if (event.target === tagHr || event.target === tagArrow) {
-    if (savedTags.length !== 0) {
-  if (tagIndex === 1) {
-      let tagsLabel = document.getElementsByClassName('tagE');
+  if (event.target === tagHr) {
+  if (tagIndex === 0 && savedTags.length !== 0) {
+      let tagsLabel = document.querySelectorAll('.tagE');
       for (var i = 0; i < tagsLabel.length; i++) {
         tagsLabel[i].style.display = 'none';
-        tagsLabel[i].classList.remove('tagSelect');
-        tagsLabel[i].style.backgroundColor = 'white';
       }
-      tagArrow.innerHTML = '&#9660;';
-      tagIndex = 0;
+      tagArrow.innerHTML = '&#9650;';
+      tagIndex = 1;
       let allEntries = document.getElementsByClassName('entry');
       for (var i = 0; i < allEntries.length; i++) {
         allEntries[i].style.display = 'grid';
       }
   }  else {
     for (var i = 0; i < savedTags.length; i++) {
-      if (preTagArr.includes(savedTags[i]) === false) {
+      if (preTagArr.includes(i) === false) {
       let tagElement = document.createElement('div');
       tagElement.innerHTML = savedTags[i];
-      preTagArr.push(savedTags[i]);
+      preTagArr.push(i);
       tagElement.className = 'tagE';
       tagElement.style.display = 'block';
       tagElement.addEventListener('click', tagSort);
       tagsList.appendChild(tagElement);
+       tagArrow.innerHTML = '&#9660;';
       }
      }
-     tagIndex = 1;
-     tagArrow.innerHTML = '&#9650;';
+     tagIndex = 0;
      let tagsLabel = document.querySelectorAll('.tagE');
      for (var i = 0; i < tagsLabel.length; i++) {
        tagsLabel[i].style.display = 'block';
      }
     }
-  } else {
-    tagArrow.innerHTML = '&#9660;';
-  }
    }
 }
 
 function tagSort (event) {
-  if (event.target.classList[1] !== 'tagSelect') {
-    let tagEach = document.querySelectorAll('.tagE');
-    for (var i = 0; i < tagEach.length; i++) {
-      tagEach[i].style.backgroundColor = 'white';
-      tagEach[i].classList.remove('tagSelect');
-    }
-    event.target.classList.add('tagSelect');
-  event.target.style.backgroundColor = '#ddd';
   let entry = [];
   let allEntries = document.getElementsByClassName('entry');
   for (var i = 0; i < allEntries.length; i++) {
     allEntries[i].style.display = 'none';
-    tagClicked = true;
   }
 
     let corr = document.getElementsByClassName(event.target.innerHTML);
@@ -657,16 +524,7 @@ function tagSort (event) {
   for (var i = 0; i < entry.length; i++) {
     entry[i].style.display = 'grid';
   }
-}
-else {
-  let allEntries = document.getElementsByClassName('entry');
-  for (var i = 0; i < allEntries.length; i++) {
-    allEntries[i].style.display = 'grid';
-  }
-  event.target.style.backgroundColor = 'white';
-  event.target.classList.remove('tagSelect');
-}
-}
+};
 
 
 
@@ -893,3 +751,6 @@ let toggleBool = false;
 toggle.addEventListener('change', function () {
   toggleBool = toggle.checked;
 })
+
+
+// check tags

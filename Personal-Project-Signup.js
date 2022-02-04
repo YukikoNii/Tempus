@@ -18,29 +18,38 @@ function addenter (event) {
     }
   }
 
+let loginInfo;
+window.addEventListener('load', function () {
+   loginInfo = localStorage.getItem('loginInfo');
+})
 
 function save () {
 
-  if (password.value !== '' && conPassword.value !== '' && username.value !== '' && email.value !== '' && emailIndex === 1 && passIndex === 1) {
+  if (loginInfo === null) {
+  if (password.value !== '' && conPassword.value !== '' && username.value !== '' && email.value !== '' && emailIndex === 1 && passIndex === 1 ) {
   // create an object that saves userinfo
   let userInfo = {
   'Username': username.value,
   'Email': email.value,
   'Password': password.value
-}
-
-// save on local storage
-localStorage.setItem('loginInfo', JSON.stringify(userInfo));
-localStorage.setItem('Username', username.value);
-// redirect
-setTimeout(function(){
-  location.href = 'Personal-Project-Home.html';
-},100)
-
-  } else {
-    alert('Invalid');
   }
+
+  // save on local storage
+  localStorage.setItem('loginInfo', JSON.stringify(userInfo));
+  localStorage.setItem('Username', username.value);
+  // redirect
+  setTimeout(function(){
+    location.href = 'Personal-Project-Home.html';
+  },100)
+
+} else {
+     alert('Invalid');
 }
+} else {
+  alert('You already have an account');
+}
+}
+
 
 let emailAlert = document.getElementById('emailAlert');
 let emailIndex = 0;

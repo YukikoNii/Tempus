@@ -162,3 +162,54 @@ function getInfo () {
   accTexts[1].value = loginInfo.Email;
   accTexts[2].value = loginInfo.Password;
 }
+
+// menu show and hide
+setBtns = document.querySelectorAll('.settingMenu > span');
+bodies = document.querySelectorAll('.body');
+for (var i = 0; i < setBtns.length; i++) {
+  setBtns[i].addEventListener('click', menuChange)
+}
+
+function menuChange (i) {
+  let mIndex = Array.prototype.indexOf.call(setBtns, this);
+  for (var i = 0; i < bodies.length; i++) {
+    bodies[i].style.display = 'none';
+  }
+  bodies[mIndex].style.display = 'grid';
+}
+
+// sound play on select
+let sDropDown = document.querySelector('.alSound');
+let script = document.querySelector('.script');
+let body = document.querySelector('body');
+let options = document.querySelectorAll('option');
+let audioArr = [];
+
+sDropDown.addEventListener('change', function () {
+  let audioObj = new Audio(sDropDown.value);
+  audioArr.push(sDropDown.value);
+  let selected = sDropDown.options[sDropDown.selectedIndex];
+  let mIndex = Array.prototype.indexOf.call(options, selected);
+  audioArr.push(mIndex);
+  body.insertBefore(audioObj, script);
+  audioObj.play();
+})
+
+let alBtn = document.querySelector('.alBtn');
+alBtn.addEventListener('click', function () {
+  localStorage.setItem('audioObj', JSON.stringify(audioArr));
+  alBtn.value = 'saved';
+  const alTimeout = setTimeout(changeBack, 1000);
+  function changeBack () {
+    alBtn.value = 'save';
+  }
+})
+
+window.addEventListener('load', function () {
+  let audioIndex = JSON.parse(localStorage.getItem('audioObj'))[1];
+  if (audioIndex !== undefined) {
+    options[audioIndex].selected = true;
+  } else {
+    options[0].selected = true;
+  }
+})
