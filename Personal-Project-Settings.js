@@ -206,10 +206,11 @@ alBtn.addEventListener('click', function () {
 })
 
 window.addEventListener('load', function () {
-  let audioIndex = JSON.parse(localStorage.getItem('audioObj'))[1];
-  if (audioIndex !== undefined) {
+  let audio = JSON.parse(localStorage.getItem('audioObj'))
+  if (audio !== null) {
+    let audioIndex = audio[1];
     options[audioIndex].selected = true;
-  } else {
+  }  else {
     options[0].selected = true;
   }
 })
