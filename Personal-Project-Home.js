@@ -75,7 +75,7 @@ window.addEventListener('load', function () {
   let greetings;
   if (hourOfDay >= 0 && hourOfDay < 12 ) {
     greetings = 'Good Morning';
-  } else if (hourOfDay >= 12 && hourOfDay <= 6){
+  } else if (hourOfDay >= 12 && hourOfDay <= 18){
     greetings = 'Hello';
   } else {
     greetings = 'Good Evening';
@@ -252,7 +252,7 @@ let dateStr = todayDate.getFullYear() + '-' + realMonth + '-' + realDate;
 let tasks  = document.querySelector('.task');
 let taskIs = true;
 window.addEventListener('load', function () {
-  if (getDateArr.length !== 0) {
+  if (getDateArr !== null) {
     for (let i = 0; i < getDateArr.length; i++) {
       if (getDateArr[i] === dateStr) {
         let ul = document.createElement('ul');
