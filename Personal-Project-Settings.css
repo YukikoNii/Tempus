@@ -117,10 +117,10 @@ input[type="email"],input[type="password"],input[type="text"], select {
   background-color: white;
   border-radius:0.5em;
   border:0.5px solid #026670;
-  padding:0.5em;
   color: #026670;
   font-size:0.8em;
   width:20%;
+  min-width:4em;
   text-align: center;
   cursor:pointer;
 }
@@ -129,7 +129,8 @@ input[type="email"],input[type="password"],input[type="text"], select {
 .accBtns {
   background-color: white;
   width:20%;
-  justify-self:center;
+
+  min-width:4em;  justify-self:center;
 }
 
 .accBtns:hover {
@@ -368,6 +369,7 @@ input[type="email"],input[type="password"],input[type="text"], select {
   align-self:center;
   padding:0.5em;
   outline:none;
+  -webkit-appearance:none;
   border:1px solid #525252;
   border-radius:0.5em;
 }
@@ -392,10 +394,4 @@ input[type="email"],input[type="password"],input[type="text"], select {
 .alBtn:hover {
   background-color: #026670;
   color:white;
-}
-
-
-/* notification setting */
-.three {
-  display:none;
 }

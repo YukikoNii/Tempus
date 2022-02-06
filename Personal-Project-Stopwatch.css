@@ -20,13 +20,13 @@
 }
 
 .sp {
-  font-size:10em;
+  font-size:14vw;
   position:relative;
   top:25%;
 }
 
 #cenSw {
-  font-size:3em;
+  font-size:5vw;
   position:relative;
   top:50%;
 }
@@ -35,13 +35,14 @@
 
 /* stopwatch button position */
 #stopwatchbuttons, #timerbuttons {
+  margin-top:1em;
   grid-column:2/4;
   grid-row:4;
   display:grid;
-  grid-template-columns:repeat(2, 1fr);
-  padding:0em 2em;
-  width:65em;
+  grid-template-columns:repeat(auto-fit, minmax(23em, 1fr));
+  grid-gap:1em;
   justify-self:center;
+  width:100%;
 }
 
 
@@ -58,9 +59,9 @@
 }
 
 .start,.stop {
-  grid-column:1;
-  grid-row:1;
-  margin:50px 30px 100px 100px;
+  margin:auto;
+  width:9em;
+  height:3em;
   border-color:#525252;
   color:white;
   background-color:#026670;
@@ -76,9 +77,9 @@
 }
 
 .reset {
-  grid-column:2;
-  grid-row:1;
-  margin:50px 100px 100px 30px;
+  margin:auto;
+  width:9em;
+  height:3em;
   background-color:#dbeff1;
   border-color:#525252;
   color:#525252;
@@ -123,6 +124,7 @@
   border:1px solid #525252;
   background-color:#fffef3;
   transition:background-color 0.3s ease;
+  z-index:2;
 }
 
 #ca1:hover, #ca2:hover {
@@ -152,7 +154,7 @@
 
 .input{
   width:100%;
-  font-size:10em;
+  font-size:14vw;
   align-self:center;
   text-align:center;
   margin-top:0.39em;
@@ -172,23 +174,17 @@
 
 
 
+@media screen and (max-width:1140px) {
+}
+
 @media screen and (max-width:1100px) {
-  #stopwatchbuttons, #timerbuttons {
-    width:60em;
-  }
+
 }
 
 @media screen and (max-width:950px) {
-  .sp {
-    font-size:8em;
-  }
-  #stopwatchbuttons, #timerbuttons {
-    width:55em;
-  }
+
 }
 
 @media screen and (max-width:850px) {
-  #stopwatchbuttons, #timerbuttons {
-    width:50em;
-  }
+
 }

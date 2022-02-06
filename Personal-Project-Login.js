@@ -8,8 +8,11 @@ let savedUs = userInfo.Username;
 let savedPa = userInfo.Password;
 
 function login() {
+  // is the form filled in?
   if (username.value !== '' && password.value !== '') {
+    // Do they match the saved info?
     if (username.value === savedUs && password.value === savedPa) {
+      // redirect
     location.href = 'Personal-Project-Home.html';
   } else {
     alert('Your login information is incorrect.');
@@ -20,6 +23,7 @@ else {
   }
 }
 
+// press enter to login
 function addenter (event) {
   if (event.key === 'Enter') {
       login();

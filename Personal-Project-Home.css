@@ -134,13 +134,12 @@
 .facts {
   border-radius: 1em;
   box-shadow: 10px 10px 20px #bbb;
-  display:grid;
-  grid-template-rows:2fr 2fr 1fr;
   border:0.5px solid #525252;
+  display:grid;
+  grid-template-rows:1fr 3fr;
 }
 
 .facts > div {
-  grid-row:2;
   text-align:center;
   align-self:center;
   font-size: 1.5em;
@@ -151,10 +150,8 @@
 }
 
 .facts > span {
-  grid-row:1;
-  text-align:center;
+  margin:auto;
   font-weight: bold;
-  align-self:center;
   font-size: 2em;
   color:#525252;
   user-select: text;
@@ -187,10 +184,12 @@
 }
 
 .noTask {
+  grid-row:2/6;
   text-align:center;
   font-size: 1.5em;
   user-select: text;
   cursor:text;
+  align-self:center;
 }
 
 .toTask {
@@ -207,21 +206,27 @@ media queries
 */
 
 @media screen and (max-width: 880px) {
+  .facts > div, .noTask {
+    font-size:1.4em;
+  }
+  .facts > span, .task > span {
+    font-size:1.7em;
+  }
   .date {
     font-size:2em;
   }
   .timeDis {
     font-size: 6em;
   }
-  .facts > span, .task > span {
-    font-size:1.3em;
-  }
-  .facts > div {
-    font-size:1em;
-  }
 }
 
 @media screen and (max-width: 750px) {
+  .facts > div,.noTask  {
+    font-size:1.2em;
+  }
+  .facts > span, .task > span {
+    font-size:1.4em;
+  }
   .date {
     font-size:1.5em;
   }

@@ -369,6 +369,8 @@ input:checked + #remtoggle:before {
 }
 
 #prchoice {
+  -webkit-appearance:none;
+  padding-left:1em;
   outline:none;
   border:1px solid #525252;
   border-radius:4px;

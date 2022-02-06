@@ -1,8 +1,9 @@
-
-
-
 /*
+
+
 stopwatch
+
+
 */
 
 
@@ -33,7 +34,7 @@ let resetbutton = document.getElementById('reset');
 resetbutton.addEventListener('click',resetSw);
 
 // checks whether the stopwatch is started/stopped
-let swIndex = 0;
+let swState = false;
 
 // start the stopwatch
 function startSw () {
@@ -76,7 +77,7 @@ function countSw () {
   stopbutton.style.display = 'block';
   clearInterval(timeSw);
   timeSw = setInterval(startSw, 10);
-  swIndex = 1;
+  swState = true;
 }
 
 // stop the stopwatch
@@ -84,7 +85,7 @@ function stopSw () {
   startbutton.style.display = 'block';
   stopbutton.style.display = 'none';
   clearInterval(timeSw);
-  swIndex = 0;
+  swState = false;
 }
 
 // reset the stopwatch
@@ -101,13 +102,13 @@ function resetSw () {
   mSw = 0;
   hSw = 0;
   msSw = 0;
-  swIndex = 0;
+  swState = false;
 }
 
 document.addEventListener('keyup', function(event) {
   if (selectIndex === 0) {
     if (event.code === 'Space') {
-      if (swIndex === 0) {
+      if (swState === false) {
         countSw();
       } else {
         stopSw();
@@ -118,7 +119,7 @@ document.addEventListener('keyup', function(event) {
     }
   } else {
     if (event.code === 'Space') {
-      if (tmrIndex === 0) {
+      if (tmrState === false) {
         countTmr();
       } else {
         stopTmr();
@@ -160,11 +161,18 @@ function stopwatch () {
 
   //  buttons
   for (let j=0; j < swbuttons.length; j++) {
-    if (j !== 1) {
-    swbuttons[j].style.display = 'block';
-    tbuttons[j].style.display = 'none';
+    if (swState === false) {
+    swbuttons[0].style.display = 'block';
+    swbuttons[1].style.display = 'none';
+    swbuttons[2].style.display = 'block';
+  } else {
+    swbuttons[0].style.display = 'none';
+    swbuttons[1].style.display = 'block';
+    swbuttons[2].style.display = 'block';
   }
+  tbuttons[j].style.display = 'none';
   }
+
 
   // carousel buttons
   ca1.style.backgroundColor = '#FEF9C7';
@@ -182,11 +190,19 @@ function timer () {
 
   //  buttons
   for (let j=0; j < swbuttons.length; j++) {
-    if (j !== 1) {
-    swbuttons[j].style.display = 'none';
-    tbuttons[j].style.display = 'block';
+    if (tmrState === false) {
+    tbuttons[0].style.display = 'block';
+    tbuttons[1].style.display = 'none';
+    tbuttons[2].style.display = 'block';
+  } else {
+    tbuttons[0].style.display = 'none';
+    tbuttons[1].style.display = 'block';
+    tbuttons[2].style.display = 'block';
   }
+  swbuttons[j].style.display = 'none';
   }
+
+
 
   ca2.style.backgroundColor = '#FEF9C7';
   ca1.style.backgroundColor = '#fffef3';
@@ -202,9 +218,11 @@ let houTime = 0;
 let minTime = 0;
 let secTime = 0;
 
+// get form inputs
 let secTimevalue = document.forms[0].elements['second'];
 let minTimevalue = document.forms[0].elements['minute'];
 let houTimevalue = document.forms[0].elements['hour'];
+// get buttons
 let timerstart = document.getElementById('startTmr');
 timerstart.addEventListener('click', countTmr);
 let timerstop = document.getElementById('stopTmr');
@@ -214,7 +232,7 @@ timerreset.addEventListener('click', resetTmr);
 let timeTmr;
 
 // index to show the state of timer
-let tmrIndex = 0;
+let tmrState = false;
 
 // start timer
 function startTmr () {
@@ -241,15 +259,20 @@ function startTmr () {
     houTimevalue.value = '0' + houTime;
   }
   timerstart.style.display = 'none';
-  timerstop.style.display = 'block';
+  if (selectIndex === 1) {
+    timerstop.style.display = 'block';
+  }
 
 if (starting === 0) {
+  // sound plays
   let alarmbeep = document.getElementById('alarmbeep');
   alarmbeep.load();
   alarmbeep.play();
+  // alert shows up after 1 second
   let myTimeout = setTimeout(timeUp, 1000);
   function timeUp () {
     alert('Time is up!');
+    tmrState = false;
   }
   clearInterval(timeTmr);
   timerstart.style.display = "block";
@@ -263,7 +286,7 @@ function countTmr () {
   clearInterval(timeTmr);
   if (starting > 0) {
   timeTmr = setInterval(startTmr, 10, starting);
-  tmrIndex = 1;
+  tmrState = true;
 } else {
   alert('Please enter a valid time');
 }
@@ -274,7 +297,7 @@ function stopTmr () {
   timerstart.style.display = 'block';
   timerstop.style.display = 'none';
   clearInterval(timeTmr);
-  tmrIndex = 0;
+  tmrState = false;
 }
 
 // reset timer
@@ -288,17 +311,22 @@ function resetTmr () {
   houTime = 0;
   minTime = 0;
   secTime = 0;
-  starting = 0;
 }
 
 // get alarm Sound
 let source = document.querySelector('#alarmbeep > source');
+// when the window loads
 window.addEventListener('load', function () {
-  let audioUrl = JSON.parse(localStorage.getItem('audioObj'))[0];
-  source.src = audioUrl;
-  if (audioUrl !== 'Alarm beep.mp3') {
-    source.type = 'audio/wav';
-  } else {
-    source.type = 'audio/mpeg'
-  }
+  // get audio object from local storage
+  let audioUrl = JSON.parse(localStorage.getItem('audioObj'));
+  if (audioUrl !== null) {
+    source.src = audioUrl[0];
+    if (audioUrl[0] !== 'Alarm beep.mp3') {
+      // if the audio type was wav
+      source.type = 'audio/wav';
+    } else {
+      // if the audio was default
+      source.type = 'audio/mpeg';
+    }  }
+
 })

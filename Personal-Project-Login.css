@@ -38,7 +38,7 @@
 
 .login {
   display:grid;
-  grid-template-rows:repeat(2, 0.8fr 2fr), 1fr 2fr;
+  grid-template-rows:repeat(2, 0.8fr 2fr) 1fr 2fr;
 
 }
 

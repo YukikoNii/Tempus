@@ -80,7 +80,11 @@ if (event.target === dropMenu) {
 }
 }
 // setting username
-let newName = JSON.parse(window.localStorage.getItem('loginInfo')).Username;
+let getInfo = JSON.parse(window.localStorage.getItem('loginInfo'));
+let newName;
+if (getInfo !== null) {
+  newName = getInfo.Username;
+}
 
 window.addEventListener('load', function () {
   userName.innerHTML = newName + '&nbsp;<span id="arrow">&#9660;</span>';

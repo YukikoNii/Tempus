@@ -57,7 +57,7 @@ section {
   justify-self:center;
   align-self:center;
   display:grid;
-  grid-template-rows:10% 80%;
+  grid-template-rows:10% 90%;
   color:#525252;
 }
 
@@ -65,6 +65,11 @@ span {
   font-size:2em;
   font-weight: bold;
   justify-self:center;
+}
+
+ol {
+  height:32.4em;
+  overflow-y:scroll;
 }
 
 li {

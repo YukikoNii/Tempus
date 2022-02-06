@@ -253,6 +253,7 @@ let tasks  = document.querySelector('.task');
 let taskIs = true;
 window.addEventListener('load', function () {
   if (getDateArr !== null) {
+    if (getDateArr.length !== 0) {
     for (let i = 0; i < getDateArr.length; i++) {
       if (getDateArr[i] === dateStr) {
         let ul = document.createElement('ul');
@@ -270,4 +271,10 @@ window.addEventListener('load', function () {
       location.href = 'Personal-Project-Todo.html';
     })
   }
+} else {
+  tasks.innerHTML += '<div class="noTask">There is no task for today.<br> <div class="linkTodo">add new task</div></div>';
+    document.querySelector('.linkTodo').addEventListener('click', function () {
+      location.href = 'Personal-Project-Todo.html';
+})
+}
 });

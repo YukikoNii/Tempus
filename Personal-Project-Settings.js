@@ -24,7 +24,6 @@ let profilePic3 = document.querySelector('.menuPic');
 window.addEventListener('load', function () {
 if (localStorage.getItem('fileSrc') === null) {
   window.localStorage.setItem('defFile', 'undraw_male_avatar_323b.svg');
-  console.log(localStorage);
 }
 });
 
@@ -154,9 +153,9 @@ document.querySelector('.delCancel').addEventListener('click', function () {
   });
 
 
-window.addEventListener('load', getInfo);
+window.addEventListener('load', getLogin);
 // setting the default values of the inputs
-function getInfo () {
+function getLogin () {
   let loginInfo = JSON.parse(window.localStorage.getItem('loginInfo'));
   accTexts[0].value = loginInfo.Username;
   accTexts[1].value = loginInfo.Email;
@@ -167,7 +166,7 @@ function getInfo () {
 setBtns = document.querySelectorAll('.settingMenu > span');
 bodies = document.querySelectorAll('.body');
 for (var i = 0; i < setBtns.length; i++) {
-  setBtns[i].addEventListener('click', menuChange)
+  setBtns[i].addEventListener('click', menuChange);
 }
 
 function menuChange (i) {

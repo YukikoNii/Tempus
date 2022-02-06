@@ -209,7 +209,6 @@ function save () {
     for (var i = 0; i < tags.length; i++) {
       allTags.push(tags[i]);
     }
-    console.log(allTags);
 
     if (savedTags.length !== 0) {
       for (var i = 0; i < tags.length; i++) {
@@ -495,7 +494,6 @@ function expand(event) {
   let date = document.getElementById(taskname + '2');
   let dateinput = document.getElementById('date').value;
   if (expand2 === 0) {
-  todo.style.height = '100px';
   todo.style.display = 'grid';
   todo.style.gridTemplateRows = '1fr 1fr 1fr';
   todo.style.marginTop = '0em';
@@ -505,15 +503,19 @@ function expand(event) {
     if (dateinput !== '' || arguments[1] === 0) {
     date.style.display = 'block';
   }
-  }
+}
+  let getDesHeight = description.offsetHeight;
+  todo.style.height = 60 + getDesHeight + 'px';
 expand2 = 1;
 }
 else {
   todo.style.height = '30px';
   todo.style.gridTemplateRows = 'none';
   description.style.display = 'none';
+  if (date !== null) {
   if (dateinput !== '' || arguments[1] === 0) {
   date.style.display = 'none';
+}
 }
   expand2 = 0;
 }
@@ -577,7 +579,7 @@ window.addEventListener('beforeunload', function () {
 window.addEventListener('load', function () {
   let loadTags = JSON.parse(localStorage.getItem('tagsStore'));
   let loadAllTags = JSON.parse(localStorage.getItem('allTags'));
-  if (loadTags !== []) {
+  if (loadTags !== null) {
   for (var i = 0; i < loadTags.length; i++) {
     savedTags.push(loadTags[i]);
   }
