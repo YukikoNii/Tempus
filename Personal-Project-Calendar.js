@@ -170,11 +170,12 @@ if (getDateArr !== null) {
   }
 }
 
-  // get today's date in ISO format 
+  // get today's date in ISO format
   let todayDate = new Date().toISOString().slice(0,10);
 let today = document.querySelector('.today');
 if (today !== null && getDateArr !== null) {
   for (let i = 0; i < getDateArr.length; i++) {
+    // if date is today
     if (getDateArr[i] === todayDate) {
       let eventCal = document.createElement('div');
       eventCal.className = 'eventCal';
