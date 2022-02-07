@@ -39,8 +39,6 @@ function renderCalendar () {
   // get day of the week of the last day of the month
   const lastDayIndex = lastDate.getDay();
 
-  console.log(lastDayIndex);
-
   // calculate how many days of the next month will be on the calendar
   const nextDays = 6 - lastDayIndex;
 
@@ -172,29 +170,12 @@ if (getDateArr !== null) {
   }
 }
 
-  let todayDate = new Date();
-  let nowMonth = todayDate.getMonth() + 1;
-  let nowDate = todayDate.getDate();
-  let realMonth;
-  let realDate;
-
-  if (nowMonth < 10) {
-   realMonth = '0' + nowMonth;
-  } else {
-    realMonth = nowMonth;
-  }
-  if (nowDate < 10) {
-    realDate = '0' + nowDate;
-  } else {
-    realDate = nowDate;
-  }
-
-
-  let dateStr = todayDate.getFullYear() + '-' + realMonth + '-' + realDate;
+  // get today's date in ISO format 
+  let todayDate = new Date().toISOString().slice(0,10);
 let today = document.querySelector('.today');
 if (today !== null && getDateArr !== null) {
   for (let i = 0; i < getDateArr.length; i++) {
-    if (getDateArr[i] === dateStr) {
+    if (getDateArr[i] === todayDate) {
       let eventCal = document.createElement('div');
       eventCal.className = 'eventCal';
       // display the title of the task

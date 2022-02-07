@@ -84,6 +84,7 @@
   overflow-y:scroll;
 }
 
+/* grey on hover except for today */
 .day:hover:not(.today) {
   background-color: #9FEDD7;
 }
@@ -92,6 +93,7 @@
   color:#ddd;
 }
 
+/* today dark green */
 .today {
   background-color:#026670;
   color:white;
