@@ -36,9 +36,10 @@ let weekAr = [
 ]
 
 
+
 let displayDate;
 function update () {
-   displayDate = new Date().toISOString().slice(11,19).replaceAll('-', ':');
+   displayDate = new Date().toString().slice(16,24);
    document.querySelector('.timeDis').innerHTML = displayDate;
   }
 
