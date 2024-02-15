@@ -6,13 +6,20 @@
   font-family:'Nunito', Sans-serif;
 }
 
+header > a:hover {
+  color:#026670
+}
+
 ::selection {
   background-color:#CDF4E9;
 }
 
 .sticky {
   position:fixed;
+
 }
+
+
 
 /*
 
@@ -23,11 +30,18 @@ header {
   background-color: #fff;
   grid-row:1;
   display:grid;
-  grid-template-columns:1fr 4em 5fr 8fr 6em 6em 1fr;
+  grid-template-columns:1fr 4em 3fr 3fr 3fr 3fr 3fr 6em 6em 1fr;
   height:5em;
   width:100%;
-  box-shadow: 0px 10px 20px #EAEAEA99;
+  box-shadow: 0px 10px 20px #f1f0f099;
+  transition-duration: 0.5s;
 }
+
+header:hover {
+  box-shadow: 0px 10px 20px #c5c5c599;
+  transition-duration: 0.5s;
+}
+
 
 .logo {
   grid-column:2;
