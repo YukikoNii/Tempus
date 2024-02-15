@@ -27,17 +27,23 @@
 }
 
 .login {
-  grid-column:5;
+  grid-column:8;
 }
 
-.login, .signup {
+.login, .signup,.features,.resources {
   color:#525252;
 }
 
-.title, .login, .signup {
+.title, .login, .signup, .features, .resources {
   align-self:center;
   text-decoration:none;
 }
+
+.title, .login, .signup {
+  font-weight:bold;
+}
+
+
 
 
 /*
@@ -56,7 +62,6 @@ sections
   align-self:center;
   width:82%;
   margin-top:5em;
-  height:100%:
 }
 
 .s1Con {
@@ -67,7 +72,11 @@ sections
 }
 
 
+@keyframes moveIn {
+  0% {width:50%}
+  100% {width:88%}
 
+}
 
 #img1 {
   justify-self:center;
@@ -75,6 +84,9 @@ sections
   width:88%;
   aspect-ratio:1;
   min-width:20em;
+  animation-name:moveIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
 }
 
 .des {
@@ -89,6 +101,7 @@ sections
 
 .button {
   width:40%;
+  appearance:none;
   -webkit-appearance:none;
   border-radius:10px;
   color:white;
@@ -99,6 +112,7 @@ sections
   min-height:3em;
   min-width:7em;
   text-decoration:none;
+  transition-duration: 0.5s; 
 }
 
 
@@ -109,7 +123,9 @@ sections
 }
 
 #btn1:hover {
-  background-color:#2f747b;
+  background-color:#ffffff;
+  transition-duration: 0.5s; 
+  color: #026670;
 }
 
 .phrase {
@@ -191,6 +207,9 @@ section 2
   width:90%;
   aspect-ratio:5/4;
   min-width:23em;
+  animation-name:moveIn;
+  animation-duration: 0.5s;
+  animation-timing-function: ease-out;
 }
 
 /* section 3 */
