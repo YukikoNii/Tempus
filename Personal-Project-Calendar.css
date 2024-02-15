@@ -82,11 +82,14 @@
   grid-template-columns:repeat(auto-fill, minmax(3em, 1fr));
   grid-gap:0.2em;
   overflow-y:scroll;
+  transition-duration: 0.2s;
 }
 
 /* grey on hover except for today */
 .day:hover:not(.today) {
-  background-color: #9FEDD7;
+  background-color: rgb(193, 238, 229);
+  transition-duration: 0.2s;
+  
 }
 
 .prevDate,.nextDate {
