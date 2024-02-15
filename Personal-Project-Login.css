@@ -34,6 +34,12 @@
   display:grid;
   grid-template-rows:20% 80%;
   color:#525252;
+  transition-duration: 0.5s;
+}
+
+.input:hover {
+  box-shadow: 10px 10px 10px #868686;
+  transition-duration: 0.5s;
 }
 
 .login {
@@ -55,7 +61,7 @@ input {
   border-radius: 1.5em;
   height:3em;
   color:#525252;
-  padding-left:0.5em;
+  padding-left:1em;
 }
 
 input:focus {
@@ -90,6 +96,12 @@ label {
 
 .toSignup > a {
   color:#026670;
+  text-decoration: underline #026670 1px;
+}
+
+.toSignup > a:hover {
+  text-decoration: underline #1e8b95 1px;
+  color: #1e8b95;
 }
 
 span:not(.forgot) {
@@ -97,8 +109,13 @@ span:not(.forgot) {
 }
 
 .forgot > a {
-  color:#525252;
+  color:#026670;
   font-weight:normal;
-  text-decoration:underline;
+  text-decoration: underline #026670 1px;
   cursor:pointer;
+}
+
+.forgot > a:hover {
+  text-decoration: underline #1e8b95 1px;
+  color: #1e8b95;
 }
