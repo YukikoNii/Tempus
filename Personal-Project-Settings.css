@@ -8,7 +8,7 @@
 section {
   grid-row:2/6;
   grid-column:2/4;
-  display:grid;
+  display: grid;
   grid-template-columns: 1fr 3fr;
   width:100%;
   height:calc(100vh - 5em);
@@ -82,14 +82,14 @@ section {
   display:grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows:1.5em 4.5em;
-  grid-gap:1em;
+  grid-gap:0.5em;
 }
 
 .profilePic {
   grid-column:1;
   grid-row:2;
   width:20%;
-  margin-left:2em;
+  margin-left:1em;
 }
 
 .con > input {
