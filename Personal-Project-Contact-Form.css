@@ -63,14 +63,14 @@ input {
   align-self:center;
   height:3em;
   color:#525252;
-  padding-left:0.5em;
+  padding-left:1em;
   background-color:white;
 }
 
 
 textarea {
   resize:none;
-  padding:0.5em;
+  padding:1em;
   height:8em;
 }
 
