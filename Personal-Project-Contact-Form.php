@@ -29,6 +29,7 @@
 
  <div class="input">
    <div class="contactTitle">Contact Us</div>
+   <?php include 'Personal-Project-PHP'?>
    <form class="contact">
      <label for="Name">Name<span>*</span></label>
      <input type="text" id="name">
