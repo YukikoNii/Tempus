@@ -1,5 +1,6 @@
 /* header */
 
+
 .grid {
   display:grid;
   grid-template-rows:50em 40em 40em 40em 26.5em 3.5em;
@@ -116,19 +117,97 @@ sections
 }
 
 
+
 #btn1 {
   margin-top:1em;
-  margin-bottom:1em;
+  margin-bottom:1em; 
   background-color: white;
   color: #026670;
+  position:relative; 
+  z-index:1;
 }
+
+#btn1::before {
+  width:100%; /*100% of the actual width */
+  height:100%;
+  appearance:none;
+  -webkit-appearance:none;
+  border-radius:10px;
+  cursor:pointer;
+  border:none;
+  border:1px solid #026670;
+  min-height:3em;
+  text-decoration:none;
+  background-color: #026670;
+  content:'';
+  position:absolute;
+  -webkit-clip-path: circle(0% at 50% 50%);
+  clip-path: circle(0% at 50% 50%);
+  left:0px;
+  top:0px;
+  animation-name:slideOut;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  z-index:-1; /* essential */
+}
+
+
+
+
+#btn1:hover::before { 
+  width:100%; /*100% of the actual width */
+  height:100%;
+  appearance:none;
+  -webkit-appearance:none;
+  border-radius:10px;
+  cursor:pointer;
+  border:none;
+  border:1px solid #026670;
+  min-height:3em;
+  text-decoration:none;
+  background-color: #026670;
+  content:'';
+  position:absolute;
+  -webkit-clip-path: circle(100% at 50% 50%);
+  clip-path: circle(100% at 50% 50%);
+  left:0px;
+  top:0px;
+  animation-name:slideIn;
+  animation-duration: 0.3s;
+  animation-timing-function: ease-out;
+  z-index:-1; /* essential */
+}
+
+@keyframes slideIn {
+  0% {
+    -webkit-clip-path: circle(30% at 50% 50%);
+  clip-path: circle(30% at 50% 50%);
+  }
+  100% { 
+    -webkit-clip-path: circle(100% at 50% 50%);
+    clip-path: circle(100% at 50% 50%);
+  }
+}
+
+@keyframes slideOut {
+  0% {
+    -webkit-clip-path: circle(100% at 50% 50%);
+  clip-path: circle(100% at 50% 50%);
+  }
+  100% { 
+    -webkit-clip-path: circle(0% at 50% 50%);
+    clip-path: circle(0% at 50% 50%);
+  }
+}
+
+
 
 #btn1:hover {
-  background-color: #026670;
-  transition-duration: 0.5s; 
   color: white;
-
+  transition:0.3s;
 }
+
+
 
 .phrase {
   color:#525252;
@@ -195,6 +274,7 @@ section 2
 .b2:hover {
   background-color: #026670;
   color:white;
+
 }
 
 
@@ -272,6 +352,7 @@ section 2
   align-self:center;
   aspect-ratio:5/7;
 }
+
 #phrase4 {
   grid-column:2;
 }
