@@ -13,6 +13,7 @@
             $subject = $_POST['name'];
             $message = $_POST['message'];
             $headers = "From:" . $from; 
+            echo"hello, world"; 
 
             if(mail($to,$subject,$message,$headers))
             {
