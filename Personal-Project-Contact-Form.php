@@ -29,7 +29,12 @@
 
  <div class="input">
    <div class="contactTitle">Contact Us</div>
-   <?php include 'Personal-Project-PHP'?>
+   <?php include
+    $i = 1;
+    echo "the first 10 natural numbers are:";
+    for($i = 1; $i <= 10; $i++) { 
+    echo $i;}
+    ?>
    <form class="contact">
      <label for="Name">Name<span>*</span></label>
      <input type="text" id="name">
