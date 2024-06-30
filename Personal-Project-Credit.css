@@ -10,16 +10,20 @@
 
 /* header */
 .login {
-  grid-column:5;
+  grid-column:8;
+}
+
+.login, .signup,.features,.resources {
   color:#525252;
 }
 
-.signup {
-  color:#525252;
-}
-.title, .login, .signup {
+.title, .login, .signup, .features, .resources {
   align-self:center;
   text-decoration:none;
+}
+
+.title, .login, .signup {
+  font-weight:bold;
 }
 
 /* section */
@@ -51,7 +55,7 @@ section {
   border-radius:4em;
   height:36em;
   width:65%;
-  box-shadow: 10px 10px 20px #bbb;
+  box-shadow: 10px 10px 10px #bbb;
   padding:2em;
   margin:1em;
   justify-self:center;
@@ -59,6 +63,13 @@ section {
   display:grid;
   grid-template-rows:10% 90%;
   color:#525252;
+  transition-duration: 0.5s;
+}
+
+.Credits:hover {
+  box-shadow: 10px 10px 10px #868686;
+  transition-duration: 0.5s;
+
 }
 
 span {
