@@ -27,10 +27,10 @@
   height:5em;
   grid-template-columns:1fr 5fr 10fr 1fr 2fr;
   border-bottom:1px solid #aaa;
-  box-shadow: 0px 10px 20px #EAEAEA99;
   z-index:1;
   position: relative;
 }
+
 
 .logo {
   grid-column:1;
@@ -102,10 +102,13 @@
   align-self:start;
   padding-left:0.7em;
   cursor:default;
+  transition-duration:0.5s;
+
 }
 
 .dropDownContent > div:hover {
   background-color:#eee;
+  transition-duration:0.5s;
 }
 
 /* iconbar */
@@ -135,7 +138,7 @@
   width:100%;
   display:grid;
   grid-template-rows:repeat(12, 1fr);
-  z-index:2;
+  z-index:1; /* was originally 2, I don't know why though. Changed it so that it becomes hidden when activing modal*/
   min-width:15em;
   height:100%;
 }
@@ -148,10 +151,12 @@
   display:grid;
   grid-template-columns:repeat(2, 1fr);
   text-decoration:none;
+  transition-duration: 0.5s;
 }
 
 #iconbar > a:hover:not(.selected) {
   background-color:#1C7E88;
+  transition-duration: 0.5s;
 }
 
 
@@ -170,6 +175,7 @@
   margin-left:-2em;
   color:white;
 }
+
 
 .selected {
   background-color:white;
