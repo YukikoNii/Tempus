@@ -23,7 +23,7 @@
 
 .input {
   background-color: white;
-  border-radius:4em;
+  border-radius:20px;
   width:65%;
   height:32em;
   box-shadow: 10px 10px 20px #bbb;
@@ -34,11 +34,17 @@
   display:grid;
   grid-template-rows:10% 90%;
   color:#525252;
+  transition-duration: 0.5s;
 }
 
 .signup {
   display:grid;
   grid-template-rows:repeat(4, 0.8fr 2fr) repeat(3, 1fr);
+}
+
+.input:hover {
+  box-shadow: 10px 10px 10px #868686;
+  transition-duration: 0.5s;
 }
 
 .signupTitle {
@@ -51,7 +57,7 @@ input {
   align-self:center;
   outline:none;
   border:0.5px solid #525252;
-  border-radius: 1.5em;
+  border-radius: 10px;
   height:3em;
   color:#525252;
   padding-left:1em;
@@ -93,6 +99,10 @@ span {
 }
 
 .toLogin > a {
+  color:#2f747b;
+}
+
+.toLogin > a:hover {
   color:#026670;
 }
 
