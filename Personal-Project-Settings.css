@@ -5,10 +5,15 @@
 *:not(input[type="button"]) {
   user-select: text;
 }
+
+:disabled {
+  cursor:not-allowed;
+}
+
 section {
   grid-row:2/6;
   grid-column:2/4;
-  display: grid;
+  display:grid;
   grid-template-columns: 1fr 3fr;
   width:100%;
   height:calc(100vh - 5em);
@@ -28,14 +33,38 @@ section {
 .settingMenu > span {
   text-align:center;
   align-self:center;
-  transition:text-decoration 0.2s;
-
+  position:relative;
+  z-index:1;
+  cursor:pointer; 
 }
 
-.settingMenu > span:hover {
-  text-decoration: underline solid #026670 5px;
-  cursor:pointer;
+.settingMenu > span:hover::before, .settingMenu > span::before {
+  content:' ';
+  cursor:pointer; 
+  position:absolute;
+  width:40%;
+  height:200%;
+  background-color:#fbfffe;
+  left:30%;
+  top:-50%;
+  z-index:-1;
+  border-radius:0.5em;
+  transition-duration:0.3s;
 }
+
+.settingMenu > span::before {
+  opacity:0;
+}
+
+.settingMenu > span:hover::before {
+  opacity:1;
+}
+
+
+
+
+
+
 
 .settingMenu > img {
   grid-row:1;
@@ -82,14 +111,14 @@ section {
   display:grid;
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows:1.5em 4.5em;
-  grid-gap:2em;
+  grid-gap:1em;
 }
 
 .profilePic {
   grid-column:1;
   grid-row:2;
   width:20%;
-  margin-left:1em;
+  margin-left:2em;
 }
 
 .con > input {
@@ -129,19 +158,21 @@ input[type="email"],input[type="password"],input[type="text"], select {
 .accBtns {
   background-color: white;
   width:20%;
+  min-width:4em;
+  justify-self:center;
+  transition-duration: 0.2s; 
 
-  min-width:4em;  justify-self:center;
 }
 
 .accBtns:hover {
   background-color: #026670;
   color:white;
+  transition-duration: 0.2s; 
 }
 
 .cancel, .save, .accBtns {
   border-radius: 0.5em;
   border:none;
-  border:0.5px solid #026670;
   color:#026670;
   cursor: pointer;
 }
@@ -158,6 +189,7 @@ input[type="email"],input[type="password"],input[type="text"], select {
   justify-self:start;
   background-color: #026670;
   color:white;
+  border:#026670 1px solid;
 }
 
 .save:hover {
@@ -290,7 +322,7 @@ input[type="email"],input[type="password"],input[type="text"], select {
   background-color:white;
   margin:calc(50vh - 10em) auto;
   width:30em;
-  height:22em;
+  height:20em;
   display:grid;
   grid-template-columns:11fr 1fr;
   grid-template-rows:1fr 9fr;
@@ -316,6 +348,7 @@ input[type="email"],input[type="password"],input[type="text"], select {
 }
 
 .proList {
+  appearance:none;
   grid-column:1/3;
   grid-row:2;
   border:0.5px solid #525252;
@@ -350,13 +383,14 @@ input[type="email"],input[type="password"],input[type="text"], select {
   grid-row-gap:1em;
 }
 
-.notif > div > span {
+.timer > span {
   grid-column:1/3;
   font-weight:bold;
   border-bottom:0.5px solid #525252;
+  position:relative;
 }
 
-.notif > div {
+.timer {
   grid-column:1/4;
   display:grid;
   grid-template-columns:1fr 1fr;
@@ -369,9 +403,24 @@ input[type="email"],input[type="password"],input[type="text"], select {
   align-self:center;
   padding:0.5em;
   outline:none;
+  appearance:none;
   -webkit-appearance:none;
   border:1px solid #525252;
   border-radius:0.5em;
+  cursor: pointer;
+  position:relative;
+  z-index:0;
+}
+
+.alSound::before {
+  position:absolute;
+  content:'˅';
+  left:0px;
+  top:0px;
+  width:100%;
+  height:100%;
+  z-index:1;
+  background-color: #026670;
 }
 
 .alSound:focus {
@@ -384,7 +433,7 @@ input[type="email"],input[type="password"],input[type="text"], select {
   justify-self:center;
   border-radius: 0.5em;
   border:none;
-  border:0.5px solid #026670;
+  border:1px solid #525252;
   color:#026670;
   cursor: pointer;
   align-self:center;
@@ -395,3 +444,5 @@ input[type="email"],input[type="password"],input[type="text"], select {
   background-color: #026670;
   color:white;
 }
+
+
