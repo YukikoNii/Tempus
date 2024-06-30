@@ -110,8 +110,8 @@ section {
   grid-column:2;
   display:grid;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-rows:1.5em 4.5em;
-  grid-gap:1em;
+  grid-template-rows:1.5em 3em 1.5em;
+  grid-gap:0.5em;
 }
 
 .profilePic {
@@ -126,7 +126,7 @@ section {
   padding:0.5em;
   outline:none;
   border:1px solid #525252;
-  border-radius:0.5em;
+  border-radius:10px;
 }
 
 .con > input:focus {
@@ -137,6 +137,14 @@ section {
 input[type="email"],input[type="password"],input[type="text"], select {
   width:80%;
   margin-left:2em;
+}
+
+.alerts {
+  text-align:left;
+  font-size:0.8em;
+  margin-left:2em;
+  color:#D35252;
+  display:none;
 }
 
 
