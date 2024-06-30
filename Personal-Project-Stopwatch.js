@@ -154,10 +154,11 @@ let tbuttons = document.getElementsByClassName('tb');
 
 function stopwatch () {
   //  display
-  for (let i=0; i < swdisplay.length; i++) {
-    swdisplay[i].style.display = 'block';
-    tinput[i].style.display = 'none';
-  }
+
+
+  // adding jQuery
+  $('.swelement').slideDown(200);
+  $('.timer').hide();
 
   //  buttons
   for (let j=0; j < swbuttons.length; j++) {
@@ -176,17 +177,15 @@ function stopwatch () {
 
   // carousel buttons
   ca1.style.backgroundColor = '#FEF9C7';
-  ca2.style.backgroundColor = '#fffef3';
+  ca2.style.backgroundColor = '#fcfcfc';
 
   selectIndex = 0;
 }
 
 function timer () {
-// display
-  for (let i=0; i < swdisplay.length; i++) {
-    swdisplay[i].style.display = 'none';
-    tinput[i].style.display = 'block';
-  }
+
+  $('.swelement').hide(0);
+  $('.timer').slideDown(200);
 
   //  buttons
   for (let j=0; j < swbuttons.length; j++) {
@@ -205,7 +204,7 @@ function timer () {
 
 
   ca2.style.backgroundColor = '#FEF9C7';
-  ca1.style.backgroundColor = '#fffef3';
+  ca1.style.backgroundColor = '#fcfcfc';
 
   selectIndex = 1;
 }
