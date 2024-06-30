@@ -5,6 +5,8 @@ var modal = document.getElementById('todomodal');
 // title
 let titleinput = document.getElementById('titleinput');
 
+// alert when title is empty
+let no_title_alert = document.getElementById('no_title_alert');
 
 // close button
 var closebutton = document.getElementById('close');
@@ -12,6 +14,8 @@ closebutton.addEventListener('click', close);
 
 function close () {
   modal.style.display = 'none';
+  no_title_alert.textContent = '*';
+  
 }
 
 // add button
@@ -115,7 +119,7 @@ function delTag(event) {
   // if delete key was pressed
   if (event.key === 'Backspace') {
     // if tag isn't empty
-    if (tags !== []) {
+    if (tags.length !== 0) {  /*WHAT??? */
       // get the name of the tag
       let targetTag = tags[tags.length - 1];
       //find the index of the tag
@@ -191,6 +195,7 @@ let savedTags = [];
 let allTags = [];
 
 function save () {
+  no_title_alert.textContent = '*';
   let entryList = document.getElementsByClassName('entry');
   let idArray = [];
   let idIndex = 0;
@@ -347,7 +352,22 @@ function save () {
 }
 
 } else {
-  alert('Please enter a title.');
+
+  const shake_animation = [
+    {transform: "translate(0, 0)" },
+    {transform:"translate(3px, 0px)" },
+    {transform:"translate(0, 0)"},
+    {transform:"translate(-3px, 0px)" },
+    {transform:"translate(0, 0)" },
+  ];
+
+  const shake_timing = {
+    duration:100,
+    interation:1,
+  };
+  
+  todomodal.animate(shake_animation, shake_timing);
+  no_title_alert.textContent = '* Please enter a title.'; // apparently better than innerHTML as it is vulnerable when the next text is userinput. (so either way is fine in this case.) 
   titleinput.style = 'border:2px solid #C43D3D';
 }
 
@@ -414,7 +434,7 @@ function complete(event) {
     todo.style.opacity = '0';
     setTimeout(function() {
       todo.remove();
-    }, 50);
+    }, 200);
 
     //
     let unique = [];
@@ -843,9 +863,9 @@ if (nowDate >= remDate) {
     const notification = new Notification('To-Do Reminder:', {
       body: remName.substr(0,remName.length - 1) + " is due today.",
       icon:'favicon.png'
-    })
-
+    });
   }
+
   if (Notification.permission === 'granted') {
     showNotification();
   } else if (Notification.permission !== 'denied') {
@@ -856,6 +876,7 @@ if (nowDate >= remDate) {
     });
   }
 
+  /* I need do something about this */
   Notification.onclose = function () {
     console.log('hello');
   }
