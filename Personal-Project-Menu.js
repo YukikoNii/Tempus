@@ -12,12 +12,15 @@ let menutexts = document.querySelectorAll('.icon');
 
 let gridcolumn = document.querySelector('.grid');
 
+let iconImg = document.getElementsByClassName('sideimg');
+
 // icon bar change the width
 function collapse () {
   if (shrink === 0) {
   let iconbar = document.getElementById('iconbar');
   iconbar.style.width = '34%';
   iconbar.style.minWidth = '5em';
+  iconImg[0].src = 'Hamburger Menu2.png';
   for (let i=0; i < menutexts.length; i++) {
     menutexts[i].style.display = 'none';
     gridcolumn.style.gridTemplateColumns = '0.29fr 4fr 1fr';
@@ -26,6 +29,7 @@ function collapse () {
 } else {
   document.getElementById('iconbar').style.width = '100%';
   iconbar.style.minWidth = '15em';
+  iconImg[0].src = 'Hamburger Menu.png';
   for (let i=0; i < menutexts.length; i++) {
     menutexts[i].style.display = 'block';
     gridcolumn.style.gridTemplateColumns = '1fr 4fr 1fr';
