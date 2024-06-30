@@ -57,6 +57,8 @@ enable the inputs
 
 // text inputs
 let accTexts = document.querySelectorAll('.accTexts');
+//alerts
+let accAlerts = document.querySelectorAll('.alerts');
 // buttons
 let accBtns = document.querySelectorAll('.accBtns');
 let cancelBtns = document.querySelectorAll('.cancel');
@@ -88,7 +90,23 @@ function cancel () {
   saveBtns[cIndex].style.display = 'none';
   accBtns[cIndex].style.display = 'block';
   accTexts[cIndex].disabled = true;
+  // has to restore the previous value. 
+
+  let loginInfo = JSON.parse(window.localStorage.getItem('loginInfo'));
+
+  if (cIndex == 0) {
+    accTexts[0].value = loginInfo.Username;
+  } else if (cIndex == 1) {
+    accTexts[1].value = loginInfo.Email;
+  } else {
+    accTexts[2].value = loginInfo.Password;
+  }
+  accTexts[cIndex].style.border = '1px solid #525252';
+  accAlerts[cIndex].style.display = 'none';
+
 }
+
+
 
 function save() {
   // get the index of the textbox that is focused
@@ -103,32 +121,35 @@ function save() {
 }
   if (accTexts[sIndex].value !== '') {
     if (emailIndex === 1) {
+
     this.style.display = 'none';
     cancelBtns[sIndex].style.display = 'none';
     accBtns[sIndex].style.display = 'block';
     accTexts[sIndex].disabled = true;
     accTexts[sIndex].style.border = '1px solid #525252';
+    accAlerts[sIndex].style.display = 'none';
     window.localStorage.setItem(accTexts[sIndex].name, accTexts[sIndex].value);
     userName.innerHTML = accTexts[0].value + '&nbsp;<span id="arrow">&#9660;</span>';
+    let newInfo = {
+      'Username': accTexts[0].value,
+      'Email':accTexts[1].value,
+      'Password':accTexts[2].value
+    }
+  
+    window.localStorage.setItem('loginInfo', JSON.stringify(newInfo));
+
   } else {
     alert('email is invalid');
     accTexts[sIndex].style.border = '1px solid #c43d3d';
   }
 }   else {
-      alert('cannot be blank');
+      accAlerts[sIndex].style.display = 'block'; // show alert message that username can't be blank. (just like acctexts, I think I have to use an index for this.)
       accTexts[sIndex].style.border = '1px solid #c43d3d';
   }
 
-  let retrieveInfo = JSON.parse(window.localStorage.getItem('loginInfo'));
 
 
-  let newInfo = {
-    'Username': accTexts[0].value,
-    'Email':accTexts[1].value,
-    'Password':accTexts[2].value
-  }
-
-  window.localStorage.setItem('loginInfo', JSON.stringify(newInfo));
+  
 
 }
 
