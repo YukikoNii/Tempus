@@ -32,7 +32,7 @@
 
 .input {
   background-color: white;
-  border-radius:4em;
+  border-radius:20px;
   height:32em;
   width:60%;
   box-shadow: 10px 10px 20px #bbb;
@@ -43,8 +43,13 @@
   display:grid;
   grid-template-rows:10% 90%;
   color:#525252;
+  transition-duration: 0.5s;
 }
 
+.input:hover {
+  box-shadow: 10px 10px 10px #868686;
+  transition-duration: 0.5s;
+}
 
 .contactTitle {
   font-weight: bold;
@@ -76,7 +81,7 @@ textarea {
 
 input, textarea {
   border:0.5px solid #525252;
-  border-radius: 1.5em;
+  border-radius: 10px;
   outline:none;
 
 }
