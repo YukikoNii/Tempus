@@ -68,14 +68,6 @@
   cursor:pointer;
 }
 
-#start {
-  display:block;
-}
-
-#stop {
-  display:none;
-}
-
 .reset {
   margin:auto;
   width:9em;
@@ -84,15 +76,27 @@
   border-color:#525252;
   color:#525252;
   cursor:pointer;
+  z-index:1;
 }
 
-.start:hover,.stop:hover {
+.start:hover, .stop:hover {
   background-color:#2f747b;
 }
 
 
 .reset:hover {
   background-color:#f4fcfc;
+}
+
+#start {
+  display:block;
+  z-index:1;
+}
+
+
+#stop {
+  display:none;
+  z-index:1; /* z-index solved the issue of stopwatch buttons not working */
 }
 
 
@@ -122,13 +126,13 @@
   width:3.5em;
   border-radius:50%;
   border:1px solid #525252;
-  background-color:#fffef3;
+  background-color:#fcfcfc;
   transition:background-color 0.3s ease;
   z-index:2;
 }
 
 #ca1:hover, #ca2:hover {
-  background-color: #FEF9C7;
+  background-color: #FEF9C7 !important; /* so that this overrides the more specific property applied by JS */
 }
 
 
@@ -168,11 +172,11 @@
 
 .input:focus {
   outline:none;
-  border:3px solid #9FEDD7;
+  border:1px solid #525252;
   border-radius:5px;
 }
 
-
+/* not yet done */
 
 @media screen and (max-width:1140px) {
 }
