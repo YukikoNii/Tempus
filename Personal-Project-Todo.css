@@ -53,7 +53,7 @@ modal
   width:100%;
   height:100%;
   z-index:1;
-  overflow:auto;
+  overflow:hidden;
   background-color:#1a525252;
   backdrop-filter:blur(3px);
 }
@@ -401,7 +401,7 @@ input:checked + #remtoggle:before {
 
 /* to do list entry */
 #list {
-  background-color:white;
+  background-color:rgba(237, 237, 237, 0.863);
   border-radius:1em;
   grid-row:2;
   grid-column:1/4;
@@ -410,7 +410,7 @@ input:checked + #remtoggle:before {
   grid-gap:1em;
   padding:1em;
   overflow-y:scroll;
-  box-shadow: 0px 0px 10px 5px #d4d4d499;
+  opacity:0.9;
 }
 
 /* each entry divided into 3 different sections */
@@ -420,6 +420,7 @@ input:checked + #remtoggle:before {
   opacity:1;
   transition:opacity 1000ms linear;
   height:30px;
+  border-radius:20px;
 }
 
 .entry:hover {
@@ -485,6 +486,7 @@ input:checked + #remtoggle:before {
   background-color:white;
   border:1px solid #525252;
   font-size:28px;
+  border-radius:1em;
 }
 
 /* background color when not checked */
@@ -505,6 +507,7 @@ input:checked + #remtoggle:before {
   color:white;
   position:absolute;
   display:none;
+  top:-10%;
 }
 
 /* show the checkmark when checkbox is checked */
@@ -512,13 +515,41 @@ input:checked + #remtoggle:before {
   display:block;
 }
 
+
+
 /* style the checkmark */
+
 .container .checkmark:after {
   transform:scaleX(-1) rotate(-40deg);
   position:absolute;
   left:5px;
-  bottom:0px;
 }
+
+.container input:checked ~.checkmark::before {
+  position:absolute;
+  background-color:#3a9098;
+  display:block;
+  content:'';
+  top:-100%;
+  left:-100%;
+  width:300%;
+  height:300%;
+  z-index:auto;
+  clip-path: circle(20px at 50% 50%);
+  opacity:0.1;
+  z-index:auto;
+  animation-name:glow;
+  animation-duration:0.3s;
+}
+
+@keyframes glow{
+  0% {opacity:0.8; clip-path:circle(20px at 50% 50%)}
+
+  100% {opacity:0; clip-path:circle(28px at 50% 50%)}
+
+}
+
+
 
 .entrydes {
   grid-column:2;
@@ -542,8 +573,8 @@ input:checked + #remtoggle:before {
   grid-row:1;
   background-color:white;
   padding:0.5em;
-  box-shadow: 0px 0px 10px 5px #d4d4d499;
   overflow-y:scroll;
+  opacity:0.9;
 }
 
 /* tags list */
@@ -617,7 +648,7 @@ input:checked + #remtoggle:before {
   grid-template-rows:1fr 7fr;
   overflow-y:scroll;
   padding:0.5em;
-  box-shadow: 0px 0px 10px 5px #d4d4d499;
+  opacity:0.9;
 }
 
 
@@ -640,6 +671,12 @@ input:checked + #remtoggle:before {
 .alertClose {
   justify-self:center;
   cursor: pointer;
+  color:#525252;
+}
+
+.alertClose:hover {
+  color:black;
+  cursor:pointer;
 }
 
 .liMes {
@@ -648,3 +685,5 @@ input:checked + #remtoggle:before {
   cursor:text;
   user-select:text;
 }
+
+
